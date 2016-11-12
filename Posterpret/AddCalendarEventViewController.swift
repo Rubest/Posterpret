@@ -117,6 +117,10 @@ class AddCalendarEventViewController: UIViewController {
         
         datePickerView.datePickerMode = UIDatePickerMode.Date
         
+        //Change color of text
+        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
+        datePickerView.backgroundColor = UIColor.blueColor()
+        
         sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
