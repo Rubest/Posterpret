@@ -36,9 +36,18 @@ class AddCalendarEventViewController: UIViewController {
                 
                 let event = EKEvent(eventStore: eventStore)
                 
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy.MM.dd 'at' HH:mm:ss zzz"
+                /* date_format_you_want_in_string from
+                 * http://userguide.icu-project.org/formatparse/datetime
+                 */
+                let date = dateFormatter.dateFromString("2016.11.14 at 15:08:56 EST"/* your_date_string */)
+                
+                
                 event.title = "Event Title"
                 event.startDate = NSDate()
-                event.endDate = NSDate()
+                event.endDate = date!
                 event.notes = "Event Details Here"
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 
