@@ -11,6 +11,8 @@ import EventKit
 
 class AddCalendarEventViewController: UIViewController {
     
+    var firstResponderATM: UITextField!
+    
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
     @IBOutlet weak var startTimePicker: UIDatePicker!
@@ -35,7 +37,7 @@ class AddCalendarEventViewController: UIViewController {
         toolBar.backgroundColor = UIColor.blackColor()
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedToolBarBtn))
+        //let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedToolBarBtn))
         let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(self.donePressed))
         
         toolBar.setItems([/*todayBtn,*/flexSpace,okBarBtn], animated: true)
@@ -95,13 +97,13 @@ class AddCalendarEventViewController: UIViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        startDateTextField.text = dateFormatter.stringFromDate(sender.date)
+        firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
         
     }
     
     
     func donePressed(sender: UIBarButtonItem) {
-        startDateTextField.resignFirstResponder()
+        firstResponderATM.resignFirstResponder()
     }
     
     func tappedToolBarBtn(sender: UIBarButtonItem) {
@@ -113,6 +115,9 @@ class AddCalendarEventViewController: UIViewController {
     }
     
     @IBAction func dateTextFieldEditing(sender: UITextField) {
+        
+        // Sender is the first responder at the moment!
+        firstResponderATM = sender
         
         // Create datePickerView (will look like a keyboard on bottom) and set input type
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -131,32 +136,22 @@ class AddCalendarEventViewController: UIViewController {
             datePickerView.date = date!
         }
         
+        // Set minimum and maximum time ranges from the user's current time (NOT hardcoded!) (up to one year prior to two years ahead)
         let currentDate: NSDate = NSDate()
-        
-        let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        // let calendar: NSCalendar = NSCalendar.currentCalendar()
+        let calendar: NSCalendar = NSCalendar.currentCalendar() //let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         calendar.timeZone = NSTimeZone(name: "UTC")!
-        
         let components: NSDateComponents = NSDateComponents()
         components.calendar = calendar
-        
+        // Min date
         components.year = -1
         let minDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
-        
+        datePickerView.minimumDate = minDate
+        // Max date
         components.year = 2
         let maxDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
-        
-        datePickerView.minimumDate = minDate
         datePickerView.maximumDate = maxDate
-        
-        print("minDate: \(minDate)")
-        print("maxDate: \(maxDate)")
-        
-        
-        
-        
-        
-        
+
+        // Setup logistics
         sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
