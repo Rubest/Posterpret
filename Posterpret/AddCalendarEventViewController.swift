@@ -92,14 +92,7 @@ class AddCalendarEventViewController: UIViewController {
         })
     }
     
-    func datePickerValueChanged(sender:UIDatePicker) {
-
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
-        
-    }
+    
     
     
     func donePressed(sender: UIBarButtonItem) {
@@ -112,6 +105,13 @@ class AddCalendarEventViewController: UIViewController {
         dateformatter.timeStyle = NSDateFormatterStyle.NoStyle
         startDateTextField.text = dateformatter.stringFromDate(NSDate())
         startDateTextField.resignFirstResponder()
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
     }
     
     @IBAction func dateTextFieldEditing(sender: UITextField) {
@@ -134,6 +134,12 @@ class AddCalendarEventViewController: UIViewController {
         if (txt != "") { // Check if textField's text is empty or has a date
             let date = dateFormatter.dateFromString(txt!)
             datePickerView.date = date!
+        
+        // Set value of textField upon click if it was empty intially
+        } else {
+            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+            firstResponderATM.text = dateFormatter.stringFromDate(datePickerView.date)
         }
         
         // Set minimum and maximum time ranges from the user's current time (NOT hardcoded!) (up to one year prior to two years ahead)
@@ -151,9 +157,10 @@ class AddCalendarEventViewController: UIViewController {
         let maxDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
         datePickerView.maximumDate = maxDate
 
-        // Setup logistics
+        // Im not really sure what this does, thinking about it
         sender.inputView = datePickerView
         
+        // Adds a listener that updates the textField everytime the datePickerView is changed
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
     }
     
