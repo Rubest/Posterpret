@@ -54,11 +54,11 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(self.donePressed))
         toolBar.setItems([/*todayBtn,*/flexSpace,okBarBtn], animated: true)
         
-        
-        
         // Assign toolbar to specific textFields
         startDateTextField.inputAccessoryView = toolBar
         endDateTextField.inputAccessoryView = toolBar
+        startTimeTextField.inputAccessoryView = toolBar
+        endTimeTextField.inputAccessoryView = toolBar
     }
     
     //https://www.andrewcbancroft.com/2016/06/02/creating-calendar-events-with-event-kit-and-swift/ 
@@ -111,101 +111,22 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     // Function called when the done button above a datePickerView is called
     func donePressed(sender: UIBarButtonItem) {
         firstResponderATM.resignFirstResponder()
+        firstResponderATM = nil
     }
     
     // Function thats called by a specific datePickerView when the date is changed.
     // It sets the active textField's text to the updated date
     func datePickerValueChanged(sender:UIDatePicker) {
-        
-        print("start")
-        print(num)
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
     }
     
-    
-    
-    
-    
-    
-    
-    // Function thats called when a date textField begins being edited
-    @IBAction func dateTextFieldEditing(sender: UITextField) {
-        print("The first responder is: ")
-        
-        print("start")
-        num = 1
-        print(num)
-        
+    func datePickerViewDisplayer(sender: UITextField) {
+        // Resign any other textfields if they're active
         if (firstResponderATM != nil && firstResponderATM != sender) {
             firstResponderATM.resignFirstResponder()
-            print("tried to resign responder")
-        }
-        
-        // Sender is the first responder at the moment!
-        firstResponderATM = sender
-        print(firstResponderATM)
-        
-        // Create datePickerView (will look like a keyboard on bottom) and set input type
-        let datePickerView:UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.Date
-        
-        // Change color of text
-        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
-        datePickerView.backgroundColor = UIColor.blueColor()
-        
-        // Set initial date value of datePickerView
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat =  "MM dd, yyyy"
-        let txt = sender.text
-        if (txt != "") { // Check if textField's text is empty or has a date
-            let date = dateFormatter.dateFromString(txt!)
-            datePickerView.date = date!
-        
-        // Set value of textField upon click if it was empty intially
-        } else {
-            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-            dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-            sender.text = dateFormatter.stringFromDate(datePickerView.date)
-        }
-        
-        // Set minimum and maximum time ranges from the user's current time (NOT hardcoded!) (up to one year prior to two years ahead)
-        let currentDate: NSDate = NSDate()
-        let calendar: NSCalendar = NSCalendar.currentCalendar() //let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        calendar.timeZone = NSTimeZone(name: "UTC")!
-        let components: NSDateComponents = NSDateComponents()
-        components.calendar = calendar
-        // Min date
-        components.year = -1
-        let minDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
-        datePickerView.minimumDate = minDate
-        // Max date
-        components.year = 2
-        let maxDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
-        datePickerView.maximumDate = maxDate
-
-        // Im not really sure what this does, thinking about it
-        sender.inputView = datePickerView
-        
-        // Adds a listener that updates the textField everytime the datePickerView is changed
-        datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
-    
-    
-    @IBAction func dateTextFieldEditing2(sender: UITextField) {
-        print("The first responder is: ")
-        
-        print("end")
-        num = 2
-        print(num)
-        
-        if (firstResponderATM != nil && firstResponderATM != sender) {
-            firstResponderATM.resignFirstResponder()
-            print("tried to resign responder")
         }
         
         // Sender is the first responder at the moment!
@@ -256,8 +177,73 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         // Adds a listener that updates the textField everytime the datePickerView is changed
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
     }
+    
+    // Function thats called by a specific datePickerView when the date is changed.
+    // It sets the active textField's text to the updated date
+    func timePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.NoStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
+    }
+    
+    func timePickerViewDisplayer(sender: UITextField) {
+        // Resign any other textfields if they're active
+        if (firstResponderATM != nil && firstResponderATM != sender) {
+            firstResponderATM.resignFirstResponder()
+        }
+        
+        // Sender is the first responder at the moment!
+        firstResponderATM = sender
+        print(firstResponderATM)
+        
+        // Create datePickerView (will look like a keyboard on bottom) and set input type
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Time
+        
+        // Change color of text
+        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
+        datePickerView.backgroundColor = UIColor.blueColor()
+        
+        // Set initial date value of datePickerView
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat =  "h:mma"
+        let txt = sender.text
+        if (txt != "") { // Check if textField's text is empty or has a date
+            let date = dateFormatter.dateFromString(txt!)
+            datePickerView.date = date!
+            
+            // Set value of textField upon click if it was empty intially
+        } else {
+            dateFormatter.dateStyle = NSDateFormatterStyle.NoStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            sender.text = dateFormatter.stringFromDate(datePickerView.date)
+        }
+        
+        // Im not really sure what this does, thinking about it
+        sender.inputView = datePickerView
+        
+        // Adds a listener that updates the textField everytime the datePickerView is changed
+        datePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+    }
 
+    
+    
+    // Function thats called when a date textField begins being edited
+    @IBAction func dateTextFieldEditing(sender: UITextField) {
+        datePickerViewDisplayer(sender)
+    }
+    @IBAction func dateTextFieldEditing2(sender: UITextField) {
+        datePickerViewDisplayer(sender)
+    }
 
+    @IBAction func timeTextFieldEditing(sender: UITextField) {
+        timePickerViewDisplayer(sender)
+    }
+
+    @IBAction func timeTextFieldEditing2(sender: UITextField) {
+        timePickerViewDisplayer(sender)
+    }
     
     
     
