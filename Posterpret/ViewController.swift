@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var testimg: UIImageView!
+    
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var addImg: UIButton!
     @IBOutlet weak var takePic: UIButton!
@@ -27,6 +29,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         img.image = image
+        testimg.image = image
     }
     
     @IBAction func addImg(sender: AnyObject) {
