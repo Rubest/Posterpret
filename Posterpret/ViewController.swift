@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var testimg: UIImageView!
+    
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var addImg: UIButton!
     @IBOutlet weak var takePic: UIButton!
