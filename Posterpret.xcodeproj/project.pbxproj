@@ -15,6 +15,7 @@
 		A15A2F261DD6D6D2001850D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15A2F241DD6D6D2001850D3 /* LaunchScreen.storyboard */; };
 		A15A2F311DD6D6D2001850D3 /* PosterpretTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F301DD6D6D2001850D3 /* PosterpretTests.swift */; };
 		A15A2F3C1DD6D6D2001850D3 /* PosterpretUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F3B1DD6D6D2001850D3 /* PosterpretUITests.swift */; };
+		A15A2F4A1DD6DFA5001850D3 /* AddCalendarEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F491DD6DFA4001850D3 /* AddCalendarEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A15A2F371DD6D6D2001850D3 /* PosterpretUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PosterpretUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15A2F3B1DD6D6D2001850D3 /* PosterpretUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterpretUITests.swift; sourceTree = "<group>"; };
 		A15A2F3D1DD6D6D2001850D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A15A2F491DD6DFA4001850D3 /* AddCalendarEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCalendarEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				A15A2F181DD6D6D2001850D3 /* AppDelegate.swift */,
 				A15A2F1A1DD6D6D2001850D3 /* ViewController.swift */,
+				A15A2F491DD6DFA4001850D3 /* AddCalendarEventViewController.swift */,
 				A15A2F1C1DD6D6D2001850D3 /* Main.storyboard */,
 				A15A2F221DD6D6D2001850D3 /* Assets.xcassets */,
 				A15A2F241DD6D6D2001850D3 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 				A15A2F1B1DD6D6D2001850D3 /* ViewController.swift in Sources */,
 				A15A2F211DD6D6D2001850D3 /* Posterpret.xcdatamodeld in Sources */,
 				A15A2F191DD6D6D2001850D3 /* AppDelegate.swift in Sources */,
+				A15A2F4A1DD6DFA5001850D3 /* AddCalendarEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
