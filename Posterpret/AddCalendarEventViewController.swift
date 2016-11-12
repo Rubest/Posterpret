@@ -131,6 +131,32 @@ class AddCalendarEventViewController: UIViewController {
             datePickerView.date = date!
         }
         
+        let currentDate: NSDate = NSDate()
+        
+        let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        // let calendar: NSCalendar = NSCalendar.currentCalendar()
+        calendar.timeZone = NSTimeZone(name: "UTC")!
+        
+        let components: NSDateComponents = NSDateComponents()
+        components.calendar = calendar
+        
+        components.year = -1
+        let minDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
+        
+        components.year = 2
+        let maxDate: NSDate = calendar.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
+        
+        datePickerView.minimumDate = minDate
+        datePickerView.maximumDate = maxDate
+        
+        print("minDate: \(minDate)")
+        print("maxDate: \(maxDate)")
+        
+        
+        
+        
+        
+        
         sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
