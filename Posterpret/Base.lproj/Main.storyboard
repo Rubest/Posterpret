@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,11 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FHi-E0-MaS">
+                                <rect key="frame" x="181" y="174" width="239" height="251"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="251" id="bBM-7a-GLf"/>
+                                    <constraint firstAttribute="width" constant="239" id="gRP-gK-D13"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ0-Fg-RUj">
+                                <rect key="frame" x="239" y="280" width="123" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="45M-8b-41b"/>
+                                    <constraint firstAttribute="height" constant="39" id="e2r-mc-Hwb"/>
+                                    <constraint firstAttribute="height" constant="39" id="tkI-j4-kOe"/>
+                                    <constraint firstAttribute="width" constant="94" id="zO6-dW-Nds"/>
+                                </constraints>
+                                <state key="normal" title="Upload a Picture"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tkI-j4-kOe"/>
+                                        <exclude reference="zO6-dW-Nds"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j5b-PR-Hao"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FHi-E0-MaS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E3W-LS-wef"/>
+                            <constraint firstItem="tJ0-Fg-RUj" firstAttribute="centerX" secondItem="FHi-E0-MaS" secondAttribute="centerX" id="J81-7e-XB3"/>
+                            <constraint firstItem="FHi-E0-MaS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ntq-Gu-oqQ"/>
+                            <constraint firstItem="tJ0-Fg-RUj" firstAttribute="centerY" secondItem="FHi-E0-MaS" secondAttribute="centerY" id="tEx-aP-E2V"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addImg" destination="tJ0-Fg-RUj" id="jmd-gF-ui8"/>
+                        <outlet property="img" destination="FHi-E0-MaS" id="1j5-8f-3VT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="245" y="337"/>
         </scene>
     </scenes>
 </document>
