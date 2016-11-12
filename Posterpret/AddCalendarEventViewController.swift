@@ -11,12 +11,35 @@ import EventKit
 
 class AddCalendarEventViewController: UIViewController {
     
+    @IBOutlet weak var startDatePicker: UIDatePicker!
     
+    @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var addToCalButton: UIButton!
     
+    @IBOutlet weak var startDateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        let date = dateFormatter.dateFromString("3:00")
+        startTimePicker.date = date!
+        
+        
+        
+        let toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = UIBarStyle.BlackTranslucent
+        toolBar.tintColor = UIColor.whiteColor()
+        toolBar.backgroundColor = UIColor.blackColor()
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedToolBarBtn))
+        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(self.donePressed))
+        
+        toolBar.setItems([/*todayBtn,*/flexSpace,okBarBtn], animated: true)
+        startDateTextField.inputAccessoryView = toolBar
         
     }
     
@@ -67,7 +90,37 @@ class AddCalendarEventViewController: UIViewController {
         })
     }
     
+    func datePickerValueChanged(sender:UIDatePicker) {
+
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        startDateTextField.text = dateFormatter.stringFromDate(sender.date)
+        
+    }
     
+    
+    func donePressed(sender: UIBarButtonItem) {
+        startDateTextField.resignFirstResponder()
+    }
+    
+    func tappedToolBarBtn(sender: UIBarButtonItem) {
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateformatter.timeStyle = NSDateFormatterStyle.NoStyle
+        startDateTextField.text = dateformatter.stringFromDate(NSDate())
+        startDateTextField.resignFirstResponder()
+    }
+    
+    @IBAction func dateTextFieldEditing(sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+    }
     
     
     
