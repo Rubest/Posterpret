@@ -113,13 +113,23 @@ class AddCalendarEventViewController: UIViewController {
     }
     
     @IBAction func dateTextFieldEditing(sender: UITextField) {
-        let datePickerView:UIDatePicker = UIDatePicker()
         
+        // Create datePickerView (will look like a keyboard on bottom) and set input type
+        let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
         
-        //Change color of text
+        // Change color of text
         datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
         datePickerView.backgroundColor = UIColor.blueColor()
+        
+        // Set initial date value of datePickerView
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat =  "MM dd, yyyy"
+        let txt = sender.text
+        if (txt != "") { // Check if textField's text is empty or has a date
+            let date = dateFormatter.dateFromString(txt!)
+            datePickerView.date = date!
+        }
         
         sender.inputView = datePickerView
         
