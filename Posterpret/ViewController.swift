@@ -32,6 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         img.image = image
         counter += 1
         sendImageAPI(image)
+        testimg.image = image
     }
     
     @IBAction func addImg(sender: AnyObject) {
@@ -132,24 +133,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
                 
                 do {
-                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
-                    
-                    print("Result -> \(result)")
-                    
-//                    print("here1")
-//                    let parsedJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? Array<AnyObject>
+//                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
 //                    
-//                    if let textAnnotations = parsedJSON?[0] as? [String: AnyObject] {
-//                        print("here2")
-//                        print("\(textAnnotations)")
-//                        if let person = textAnnotations["description"] as? [String: AnyObject] {
-//                            
-//                        }
-//                    }
+//                    print("Result -> \(result)")
                     
+                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                    let snd = result!.first!.1 as! [AnyObject]
+                    let third = (((snd[0] as! [String: AnyObject]).first!.1 as! [AnyObject])[0]) as! [String:AnyObject]
+                    let final = (third["description"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: " ")
+                    print(final)
                     
                     self.natLang(result!);
-//                    let myArray = JSONArray(result);
                     
                 } catch {
                     print("Error -> \(error)")
