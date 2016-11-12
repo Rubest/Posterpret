@@ -11,38 +11,40 @@ import EventKit
 
 class AddCalendarEventViewController: UIViewController {
     
-    var firstResponderATM: UITextField!
     
     @IBOutlet weak var startDatePicker: UIDatePicker!
-    
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var addToCalButton: UIButton!
     
+    
+    // Current active textField
+    var firstResponderATM: UITextField!
+    
+    // textFields
     @IBOutlet weak var startDateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat =  "HH:mm"
-        let date = dateFormatter.dateFromString("3:00")
-        startTimePicker.date = date!
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat =  "HH:mm"
+//        let date = dateFormatter.dateFromString("3:00")
+//        startTimePicker.date = date!
         
         
-        
+        // Create and set attributes of the toolbar that will be above a datePickerView or timePickerView
         let toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         toolBar.barStyle = UIBarStyle.BlackTranslucent
         toolBar.tintColor = UIColor.whiteColor()
         toolBar.backgroundColor = UIColor.blackColor()
-        
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         //let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedToolBarBtn))
         let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(self.donePressed))
-        
         toolBar.setItems([/*todayBtn,*/flexSpace,okBarBtn], animated: true)
-        startDateTextField.inputAccessoryView = toolBar
         
+        // Assign toolbar to specific textFields
+        startDateTextField.inputAccessoryView = toolBar
     }
     
     //https://www.andrewcbancroft.com/2016/06/02/creating-calendar-events-with-event-kit-and-swift/ 
@@ -92,21 +94,13 @@ class AddCalendarEventViewController: UIViewController {
         })
     }
     
-    
-    
-    
+    // Function called when the done button above a datePickerView is called
     func donePressed(sender: UIBarButtonItem) {
         firstResponderATM.resignFirstResponder()
     }
     
-    func tappedToolBarBtn(sender: UIBarButtonItem) {
-        let dateformatter = NSDateFormatter()
-        dateformatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        dateformatter.timeStyle = NSDateFormatterStyle.NoStyle
-        startDateTextField.text = dateformatter.stringFromDate(NSDate())
-        startDateTextField.resignFirstResponder()
-    }
-    
+    // Function thats called by a specific datePickerView when the date is changed.
+    // It sets the active textField's text to the updated date
     func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
@@ -114,6 +108,7 @@ class AddCalendarEventViewController: UIViewController {
         firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
     }
     
+    // Function thats called when a date textField begins being edited
     @IBAction func dateTextFieldEditing(sender: UITextField) {
         
         // Sender is the first responder at the moment!
