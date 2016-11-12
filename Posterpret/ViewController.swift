@@ -9,9 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var addImg: UIButton!
+    @IBOutlet weak var takePic: UIButton!
     
     var imagePicker: UIImagePickerController!
     
@@ -26,11 +27,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         img.image = image
     }
-
+    
     @IBAction func addImg(sender: AnyObject) {
+        imagePicker.sourceType = .PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
         addImg.setTitle("", forState: .Normal)
     }
-
+    
+    @IBAction func takePic(sender: UIButton) {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.allowsEditing = false
+        self.navigationController?.pushViewController(imagePicker, animated: true)
+        takePic.setTitle("", forState: .Normal)
+    }
 }
 
