@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -43,13 +44,6 @@
                                     <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j5b-PR-Hao"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-pN-73W">
-                                <rect key="frame" x="433" y="544" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="yGu-14-dZK" kind="show" id="dkL-JU-fer"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-ra-kBh">
                                 <rect key="frame" x="239" y="433" width="123" height="39"/>
                                 <constraints>
@@ -61,13 +55,20 @@
                                 <state key="normal" title="Take a Picture"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="hZm-rT-atA"/>
                                         <exclude reference="Wdf-fU-VJB"/>
+                                        <exclude reference="hZm-rT-atA"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9OI-Mt-Yx1"/>
                                     <action selector="takePic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5I-bW-5wB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-pN-73W">
+                                <rect key="frame" x="433" y="550" width="147" height="30"/>
+                                <state key="normal" title="Go to Calendar"/>
+                                <connections>
+                                    <segue destination="yGu-14-dZK" kind="show" id="dkL-JU-fer"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,7 +77,9 @@
                             <constraint firstItem="XiW-ra-kBh" firstAttribute="top" secondItem="FHi-E0-MaS" secondAttribute="bottom" constant="8" id="8yx-7o-eFp"/>
                             <constraint firstItem="FHi-E0-MaS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E3W-LS-wef"/>
                             <constraint firstItem="tJ0-Fg-RUj" firstAttribute="centerX" secondItem="FHi-E0-MaS" secondAttribute="centerX" id="J81-7e-XB3"/>
+                            <constraint firstItem="ecK-pN-73W" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="LUL-V0-Lb9"/>
                             <constraint firstItem="FHi-E0-MaS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ntq-Gu-oqQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecK-pN-73W" secondAttribute="bottom" constant="20" id="Yg5-VP-UOq"/>
                             <constraint firstItem="XiW-ra-kBh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fK5-Pa-Ghl"/>
                             <constraint firstItem="tJ0-Fg-RUj" firstAttribute="centerY" secondItem="FHi-E0-MaS" secondAttribute="centerY" id="tEx-aP-E2V"/>
                         </constraints>
@@ -102,8 +105,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ncy-iK-fFb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWH-ot-dU4">
+                                <rect key="frame" x="247" y="202" width="174" height="30"/>
+                                <state key="normal" title="Add to Calendar"/>
+                                <connections>
+                                    <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="iH6-p6-nI7"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="addToCalButton" destination="qWH-ot-dU4" id="asq-Ly-Lah"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-YR-Qoy" sceneMemberID="firstResponder"/>
             </objects>
