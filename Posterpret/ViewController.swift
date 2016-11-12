@@ -47,24 +47,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let jsonRequest: [String: AnyObject] = [
             "requests": [
                 "features": [
-                "type":"LABEL_DETECTION"
-            ],
-            "image": [
-            "source": [
-            "gcsImageUri":"gs://bucket/demo-image.jpg"
-        ]
-        ]
-        ]
-        ]
-        
-        data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", jsonObject: jsonToString(jsonRequest));
-    }
-    
-    func data_request(url_to_request: String, jsonObject: String) {
-        
-        let json = [
-            "requests": [
-                "features": [
                 "type":"TEXT_DETECTION"
             ],
             "image": [
@@ -75,6 +57,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ]
         ]
         
+        data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: jsonRequest);
+    }
+    
+    func data_request(url_to_request: String, json: AnyObject) {
+        
+//        let json = [
+//            "requests": [
+//                "features": [
+//                "type":"TEXT_DETECTION"
+//            ],
+//            "image": [
+//            "source": [
+//            "gcsImageUri":"gs://posterpret-buck/poster.png"
+//        ]
+//        ]
+//        ]
+//        ]
+        
         let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(json)
         
         do {
@@ -82,7 +82,85 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
             
             // create post request
-            let url = NSURL(string: "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE")!
+            let url = NSURL(string: url_to_request)!
+            let request = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            
+            // insert json data to the request
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+            
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
+                if error != nil{
+                    print("Error -> \(error)")
+                    return
+                }
+                
+                do {
+                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                    
+                    print("Result -> \(result)")
+                    self.natLang(result!);
+//                    let myArray = JSONArray(result);
+                    
+                } catch {
+                    print("Error -> \(error)")
+                }
+            }
+            task.resume()
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    func jsonToString(json: AnyObject) -> String {
+        do {
+            let data1 =  try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted) // first of all convert json to the data
+            let convertedString = String(data: data1, encoding: NSUTF8StringEncoding) // the data will be converted to the string
+            print(convertedString)
+            return(convertedString!) // <-- here is ur string
+            
+        } catch let myJSONError {
+            return "";
+        }
+    }
+    
+    
+    func natLang(json: AnyObject) {
+        let text = [
+            "document": [
+                "type": "PLAIN_TEXT",
+                "language": "EN",
+                "content": "Michelangelo Caravaggio, Italian painter, is known for 'The Calling of Saint Matthew'."
+            ],
+            "encodingType":"UTF8"
+        ]
+//        print("\(text)")
+        nat_lang_request("https://language.googleapis.com/v1beta1/documents:analyzeEntities?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: text);
+    }
+    
+    func nat_lang_request(url_to_request: String, json: AnyObject) {
+        
+//        let json = [
+//            "document": [
+//                "type": "PLAIN_TEXT",
+//                "language": "EN",
+//                "content": "Hello my name is Noah!!!"
+//            ],
+//            "encodingType":"UTF8"
+//        ]
+        print("\(json)")
+        
+        let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(json)
+        
+        do {
+            
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+            
+            // create post request
+            let url = NSURL(string: url_to_request)!
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "POST"
             
@@ -109,19 +187,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             task.resume()
         } catch {
             print(error)
-        }
-    }
-    
-    
-    func jsonToString(json: AnyObject) -> String {
-        do {
-            let data1 =  try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted) // first of all convert json to the data
-            let convertedString = String(data: data1, encoding: NSUTF8StringEncoding) // the data will be converted to the string
-            print(convertedString)
-            return(convertedString!) // <-- here is ur string
-            
-        } catch let myJSONError {
-            return "";
         }
     }
     
