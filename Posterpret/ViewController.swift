@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var apiButton: UIButton!
     
     var imagePicker: UIImagePickerController!
+    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         img.image = image
+        counter += 1
+        sendImageAPI(image)
     }
     
     @IBAction func addImg(sender: AnyObject) {
@@ -58,6 +61,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ]
         
         data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: jsonRequest);
+    }
+    
+    
+    func sendImageAPI(image: UIImage) {
+        let url = NSURL(string: "https://www.googleapis.com/upload/storage/v1/b/posterpret-buck/o?uploadType=media&name=myObject\(counter).jpeg")!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        
+        request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        
+        let image_data = UIImageJPEGRepresentation(image, 0.5)
+        let body = NSMutableData()
+        body.appendData(image_data!)
+        
+        request.HTTPBody = body
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
+            if error != nil {
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                print("Result -> \(result)")
+            } catch {
+                print("Error -> \(error)")
+            }
+        }
+        task.resume()
     }
     
     func data_request(url_to_request: String, json: AnyObject) {
@@ -101,6 +133,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
                     
                     print("Result -> \(result)")
+                    
+//                    print("here1")
+//                    let parsedJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? Array<AnyObject>
+//                    
+//                    if let textAnnotations = parsedJSON?[0] as? [String: AnyObject] {
+//                        print("here2")
+//                        print("\(textAnnotations)")
+//                        if let person = textAnnotations["description"] as? [String: AnyObject] {
+//                            
+//                        }
+//                    }
+                    
+                    
                     self.natLang(result!);
 //                    let myArray = JSONArray(result);
                     
