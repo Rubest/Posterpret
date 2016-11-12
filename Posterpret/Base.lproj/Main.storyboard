@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWH-ot-dU4">
-                                <rect key="frame" x="367" y="471" width="174" height="30"/>
+                                <rect key="frame" x="376" y="559" width="174" height="30"/>
                                 <state key="normal" title="Add to Calendar"/>
                                 <connections>
                                     <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="iH6-p6-nI7"/>
@@ -153,6 +153,34 @@
                                     <action selector="dateTextFieldEditing:" destination="yGu-14-dZK" eventType="editingDidBegin" id="1Ak-Jw-EFJ"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1aK-k4-wZk">
+                                <rect key="frame" x="20" y="285" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="dateTextFieldEditing2:" destination="yGu-14-dZK" eventType="editingDidBegin" id="z1I-RV-KMp"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EHV-pN-7cY">
+                                <rect key="frame" x="20" y="329" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xtk-4Y-xtl">
+                                <rect key="frame" x="20" y="379" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8zY-i5-dm0">
+                                <rect key="frame" x="20" y="428" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-dV-tQd">
+                                <rect key="frame" x="20" y="476" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -161,15 +189,22 @@
                             <constraint firstItem="1rG-5v-oHi" firstAttribute="leading" secondItem="Ncy-iK-fFb" secondAttribute="leadingMargin" id="Ca8-rS-Eyv"/>
                             <constraint firstItem="NE6-pz-ICf" firstAttribute="trailing" secondItem="Ncy-iK-fFb" secondAttribute="trailingMargin" id="Mm4-dp-Ik4"/>
                             <constraint firstItem="NE6-pz-ICf" firstAttribute="top" secondItem="1rG-5v-oHi" secondAttribute="bottom" constant="-1" id="Y1y-6b-mrf"/>
+                            <constraint firstItem="1aK-k4-wZk" firstAttribute="leading" secondItem="Ncy-iK-fFb" secondAttribute="leadingMargin" id="YEA-Il-hpb"/>
+                            <constraint firstItem="1aK-k4-wZk" firstAttribute="trailing" secondItem="Ncy-iK-fFb" secondAttribute="trailingMargin" id="YUE-aw-Pwb"/>
                             <constraint firstItem="Taz-SH-rmc" firstAttribute="leading" secondItem="Ncy-iK-fFb" secondAttribute="leadingMargin" id="ahc-eu-YHX"/>
                             <constraint firstItem="NE6-pz-ICf" firstAttribute="leading" secondItem="Ncy-iK-fFb" secondAttribute="leadingMargin" id="blJ-VN-dyr"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addToCalButton" destination="qWH-ot-dU4" id="asq-Ly-Lah"/>
+                        <outlet property="endDateTextField" destination="1aK-k4-wZk" id="lwM-0Y-Rx6"/>
+                        <outlet property="endTimeTextField" destination="xtk-4Y-xtl" id="suJ-uD-0CV"/>
+                        <outlet property="eventTitleTextField" destination="8zY-i5-dm0" id="8AL-tZ-34Y"/>
+                        <outlet property="locationTitleTextField" destination="mvA-dV-tQd" id="P0r-18-Obf"/>
                         <outlet property="startDatePicker" destination="1rG-5v-oHi" id="zt4-by-a9O"/>
                         <outlet property="startDateTextField" destination="Taz-SH-rmc" id="oIF-kT-KXY"/>
                         <outlet property="startTimePicker" destination="NE6-pz-ICf" id="Isi-IU-4hb"/>
+                        <outlet property="startTimeTextField" destination="EHV-pN-7cY" id="09x-T4-uQx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-YR-Qoy" sceneMemberID="firstResponder"/>
