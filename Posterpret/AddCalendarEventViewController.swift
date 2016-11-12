@@ -11,11 +11,6 @@ import EventKit
 
 class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     
-    var num = 0
-    
-    
-    @IBOutlet weak var startDatePicker: UIDatePicker!
-    @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var addToCalButton: UIButton!
     
     
