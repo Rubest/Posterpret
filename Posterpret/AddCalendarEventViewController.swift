@@ -59,6 +59,9 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         endDateTextField.inputAccessoryView = toolBar
         startTimeTextField.inputAccessoryView = toolBar
         endTimeTextField.inputAccessoryView = toolBar
+        eventTitleTextField.inputAccessoryView = toolBar
+        locationTitleTextField.inputAccessoryView = toolBar
+        
     }
     
     //https://www.andrewcbancroft.com/2016/06/02/creating-calendar-events-with-event-kit-and-swift/ 
@@ -66,6 +69,18 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func addtoCalendarClicked(sender: AnyObject) {
+        
+        if (self.eventTitleTextField.text! == "" ||
+            self.startDateTextField.text! == "" ||
+            self.startTimeTextField.text! == "" ||
+            self.endDateTextField.text! == "" ||
+            self.endTimeTextField.text! == "" ||
+            self.locationTitleTextField.text! == "") {
+            // Display error message
+            
+            return;
+        }
+        
         
         let eventStore = EKEventStore()
         
@@ -79,16 +94,20 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
                 
                 
                 let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy.MM.dd 'at' HH:mm:ss zzz"
+                //dateFormatter.dateFormat = "yyyy.MM.dd 'at' HH:mm:ss zzz"
+                dateFormatter.dateFormat = "MM dd, yyyy hh:mma"
                 /* date_format_you_want_in_string from
                  * http://userguide.icu-project.org/formatparse/datetime
                  */
-                let date = dateFormatter.dateFromString("2016.11.14 at 15:08:56 EST"/* your_date_string */)
+                //let date = dateFormatter.dateFromString("2016.11.14 at 15:08:56 EST"/* your_date_string */)
                 
                 
-                event.title = "Event Title"
-                event.startDate = NSDate()
-                event.endDate = date!
+                event.title = self.eventTitleTextField.text!
+                let start = self.startDateTextField.text! + " " + self.startTimeTextField.text!
+                event.startDate = dateFormatter.dateFromString(start)!
+                let end = self.endDateTextField.text! + " " + self.endTimeTextField.text!
+                event.endDate = dateFormatter.dateFromString(end)!
+                event.location = self.locationTitleTextField.text!
                 event.notes = "Event Details Here"
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 
@@ -131,7 +150,6 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         
         // Sender is the first responder at the moment!
         firstResponderATM = sender
-        print(firstResponderATM)
         
         // Create datePickerView (will look like a keyboard on bottom) and set input type
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -195,7 +213,6 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         
         // Sender is the first responder at the moment!
         firstResponderATM = sender
-        print(firstResponderATM)
         
         // Create datePickerView (will look like a keyboard on bottom) and set input type
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -246,6 +263,25 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func titleTextFieldEditing(sender: UITextField) {
+        // Resign any other textfields if they're active
+        if (firstResponderATM != nil && firstResponderATM != sender) {
+            firstResponderATM.resignFirstResponder()
+        }
+        
+        // Sender is the first responder at the moment!
+        firstResponderATM = sender
+    }
+    
+    @IBAction func locationTextFieldEditing(sender: UITextField) {
+        // Resign any other textfields if they're active
+        if (firstResponderATM != nil && firstResponderATM != sender) {
+            firstResponderATM.resignFirstResponder()
+        }
+        
+        // Sender is the first responder at the moment!
+        firstResponderATM = sender
+    }
     
     
 }
