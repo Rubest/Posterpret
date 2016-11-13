@@ -281,8 +281,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
-                    
-                    print("Result -> \(result)")
+                    var res = result!.dropFirst().first!.1 as! [AnyObject]
+                    let len = res.count;
+                    if (len > 0) {
+                        for i in Range(0 ..< len - 1) {
+                            let obj = res[i] as! [String:AnyObject]
+                            if((obj["type"]! as! String) == "LOCATION") {
+                                self.location = obj["name"]! as! String
+                                break;
+                            }
+                        }
+                    }
                     
                 } catch {
                     print("Error -> \(error)")
