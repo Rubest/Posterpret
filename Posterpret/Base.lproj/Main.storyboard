@@ -458,6 +458,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="iH6-p6-nI7"/>
+                                    <segue destination="AfQ-6F-Ca7" kind="show" id="zUm-m1-edY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-P3-coj">
@@ -500,17 +501,16 @@
                         <outlet property="locationTitleTextField" destination="mvA-dV-tQd" id="P0r-18-Obf"/>
                         <outlet property="startDateTextField" destination="Taz-SH-rmc" id="oIF-kT-KXY"/>
                         <outlet property="startTimeTextField" destination="EHV-pN-7cY" id="09x-T4-uQx"/>
-                        <segue destination="AfQ-6F-Ca7" kind="show" identifier="eventAdded" id="N5Y-rq-dPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-YR-Qoy" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1058" y="340"/>
         </scene>
-        <!--Add Calendar Event View Controller-->
+        <!--End View Controller-->
         <scene sceneID="e5p-Xb-llv">
             <objects>
-                <viewController id="AfQ-6F-Ca7" customClass="AddCalendarEventViewController" customModule="Posterpret" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AfQ-6F-Ca7" customClass="EndViewController" customModule="Posterpret" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ydW-4Z-zZg"/>
                         <viewControllerLayoutGuide type="bottom" id="dnJ-10-fNB"/>
@@ -534,7 +534,6 @@ Wanna do another?</string>
                                     <color key="titleColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addtoCalendarClicked:" destination="AfQ-6F-Ca7" eventType="touchUpInside" id="QbE-Ff-xtY"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="4HU-v3-NSY"/>
                                 </connections>
                             </button>
@@ -551,9 +550,6 @@ Wanna do another?</string>
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="addToCalButton" destination="RIg-Oc-FMg" id="NMm-Wm-Khh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfz-CS-flU" sceneMemberID="firstResponder"/>
             </objects>
@@ -566,6 +562,6 @@ Wanna do another?</string>
         <image name="homepage" width="1100" height="1140"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6ON-ZZ-27j"/>
+        <segue reference="4HU-v3-NSY"/>
     </inferredMetricsTieBreakers>
 </document>
