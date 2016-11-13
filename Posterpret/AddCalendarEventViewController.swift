@@ -11,6 +11,7 @@ import EventKit
 
 class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     
+    
     @IBOutlet weak var addToCalButton: UIButton!
     
     
@@ -31,6 +32,11 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         self.startDateTextField.delegate = self;
         self.endDateTextField.delegate = self;
         
+        self.startTimeTextField.delegate = self;
+        self.endTimeTextField.delegate = self;
+        self.eventTitleTextField.delegate = self;
+        self.locationTitleTextField.delegate = self;
+        
         
 //        let dateFormatter = NSDateFormatter()
 //        dateFormatter.dateFormat =  "HH:mm"
@@ -42,8 +48,8 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         let toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         toolBar.barStyle = UIBarStyle.BlackTranslucent
-        toolBar.tintColor = UIColor.whiteColor()
-        toolBar.backgroundColor = UIColor.blackColor()
+        toolBar.tintColor = UIColor(red:0.95, green:0.93, blue:0.93, alpha:1.0)
+        toolBar.backgroundColor = UIColor(red:0.24, green:0.33, blue:0.40, alpha:1.0) //UIColor.blackColor()
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         //let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedToolBarBtn))
         let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(self.donePressed))
@@ -151,8 +157,8 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         datePickerView.datePickerMode = UIDatePickerMode.Date
         
         // Change color of text
-        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
-        datePickerView.backgroundColor = UIColor.blueColor()
+        datePickerView.setValue(UIColor(red:0.95, green:0.93, blue:0.93, alpha:1.0), forKeyPath: "textColor")
+        datePickerView.backgroundColor = UIColor(red:0.24, green:0.33, blue:0.40, alpha:1.0)
         
         // Set initial date value of datePickerView
         let dateFormatter = NSDateFormatter()
@@ -214,8 +220,8 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         datePickerView.datePickerMode = UIDatePickerMode.Time
         
         // Change color of text
-        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
-        datePickerView.backgroundColor = UIColor.blueColor()
+        datePickerView.setValue(UIColor(red:0.95, green:0.93, blue:0.93, alpha:1.0), forKeyPath: "textColor")
+        datePickerView.backgroundColor = UIColor(red:0.24, green:0.33, blue:0.40, alpha:1.0)
         
         // Set initial date value of datePickerView
         let dateFormatter = NSDateFormatter()
