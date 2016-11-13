@@ -169,8 +169,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     } else {
                         let third = (((snd[0] as! [String: AnyObject]).first!.1 as! [AnyObject])[0]) as! [String:AnyObject]
                         final = (third["description"]! as! String)
-                        self.eventTitle = final.componentsSeparatedByString("\n")[0]
+                        //self.eventTitle = final.componentsSeparatedByString("\n")[0]
+                        let finalWithoutNewLines = final
                         final = final.stringByReplacingOccurrencesOfString("\n", withString: " ")
+                        let theArr = ((snd[0] as! [String: AnyObject]).first!.1) as! [AnyObject]
+                        let len = theArr.count
+                        var maxArea = 0
+                        var maxWord = ""
+                        for i in Range(start: 1, end: len) {
+                            let coords = (((theArr[i] as! [String:AnyObject])["boundingPoly"]! as! [String:AnyObject])["vertices"]) as! [AnyObject]
+                            let x1 = (coords[0] as! [String:AnyObject])["x"]! as! Int
+                            let y1 = (coords[0] as! [String:AnyObject])["y"]! as! Int
+                            let x2 = (coords[2] as! [String:AnyObject])["x"]! as! Int
+                            let y2 = (coords[2] as! [String:AnyObject])["y"]! as! Int
+                            let area = (x2 - x1) * (y2 - y1)
+                            //print("Area: " + String(area))
+                            let word = (theArr[i] as! [String:AnyObject])["description"]! as! String
+                            //print("Word: " + word + "\n----")
+                            if (area > maxArea) {
+                                maxArea = area
+                                maxWord = word
+                            }
+                        }
+                        let arr = finalWithoutNewLines.componentsSeparatedByString("\n")
+                        let arrlen = arr.count
+                        for i in Range(start: 0, end: arrlen) {
+                            print(i)
+                            if arr[i].containsString(maxWord) {
+                                self.eventTitle = arr[i]
+                                break;
+                            }
+                        }
                     }
                     self.date = self.findADate(final)
                     self.autofillCalendar(final)
