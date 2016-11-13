@@ -77,7 +77,7 @@
                                             <color key="titleColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="yGu-14-dZK" kind="show" id="dkL-JU-fer"/>
+                                            <action selector="posterpretItAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTw-Mz-h0X"/>
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="or retake?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaO-tK-9ER">
@@ -237,11 +237,12 @@
                         <outlet property="posterpretButton" destination="ecK-pN-73W" id="5xl-W0-Rdg"/>
                         <outlet property="retakeLabel" destination="oaO-tK-9ER" id="ya9-n8-7YK"/>
                         <outlet property="takePic" destination="XiW-ra-kBh" id="mUU-pK-cQp"/>
+                        <segue destination="yGu-14-dZK" kind="show" identifier="posterpretSeque" id="XS1-Gy-Ypu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="337"/>
+            <point key="canvasLocation" x="290" y="429"/>
         </scene>
         <!--Add Calendar Event View Controller-->
         <scene sceneID="Zfs-Ew-4FW">

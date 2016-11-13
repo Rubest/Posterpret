@@ -10,10 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var startTime: String = "";
-    var endTime:String = "";
-    var eventTitle:String = "";
-    var date:String = "";
+    var startTime: String = ""
+    var endTime:String = ""
+    var eventTitle:String = ""
+    var date:String = ""
+    var location:String = ""
     
     @IBOutlet weak var testimg: UIImageView!
     
@@ -38,6 +39,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: nil, action: nil)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        // Sending relevant data to the
+        if (segue.identifier == "posterpretSeque") {
+            let svc = segue.destinationViewController as! AddCalendarEventViewController;
+            svc.eventTitle = self.eventTitle
+            svc.location = self.location
+            svc.startDate = self.date
+            svc.endDate = self.date
+            svc.startTime = self.startTime
+            svc.endTime = self.endTime
+        }
+    }
+    
+    // PUT THIS NEXT LINE IN THE PLACE WHERE YOU WANT TO START THE SEQUE
+    //self.performSegueWithIdentifier("posterpretSeque", sender: nil)
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         
@@ -57,6 +76,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = .PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
         addImg.setTitle("", forState: .Normal)
+    }
+    @IBAction func posterpretItAction(sender: UIButton) {
+        self.performSegueWithIdentifier("posterpretSeque", sender: nil)
     }
     
     @IBAction func takePic(sender: UIButton) {
@@ -167,7 +189,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.date = self.findADate(final)
                     self.autofillCalendar(final)
                     self.natLang(final);
-                    
                     
                     
                 } catch {
