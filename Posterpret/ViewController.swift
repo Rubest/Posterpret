@@ -303,7 +303,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     var res = result!.dropFirst().first!.1 as! [AnyObject]
                     let len = res.count;
                     if (len > 0) {
-                        for i in Range(0 ..< len - 1) {
+                        for i in Range(0 ..< len) {
                             let obj = res[i] as! [String:AnyObject]
                             if((obj["type"]! as! String) == "LOCATION") {
                                 self.location = obj["name"]! as! String
