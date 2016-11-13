@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -69,7 +69,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qnr-6X-jOy">
                                 <rect key="frame" x="167" y="324" width="0.0" height="0.0"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-pN-73W">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-pN-73W">
                                         <rect key="frame" x="-361" y="-444" width="267" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="eKP-h6-Wgc"/>
@@ -83,7 +83,7 @@
                                             <action selector="posterpretItAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTw-Mz-h0X"/>
                                         </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="or retake?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaO-tK-9ER">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="or retake?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaO-tK-9ER">
                                         <rect key="frame" x="-300" y="-444" width="146" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="146" id="Log-0u-XiK"/>
@@ -430,7 +430,7 @@
                                     <constraint firstAttribute="width" constant="175" id="hEP-sc-OUe"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BWn-aa-3jx">
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BWn-aa-3jx">
                                 <rect key="frame" x="50" y="382" width="244" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="and then save it to your calendar!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vht-24-gHp">
@@ -440,9 +440,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(Fill in everything else first tho)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL6-1I-eMM">
-                                        <rect key="frame" x="15" y="41" width="229" height="21"/>
+                                        <rect key="frame" x="0.0" y="41" width="229" height="21"/>
                                         <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="18"/>
-                                        <color key="textColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.87776845693588257" green="0.34542292356491089" blue="0.19818761944770813" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -458,7 +458,6 @@
                                 </state>
                                 <connections>
                                     <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="iH6-p6-nI7"/>
-                                    <segue destination="AfQ-6F-Ca7" kind="show" id="zUm-m1-edY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-P3-coj">
@@ -497,10 +496,12 @@
                         <outlet property="addToCalButton" destination="qWH-ot-dU4" id="asq-Ly-Lah"/>
                         <outlet property="endDateTextField" destination="1aK-k4-wZk" id="lwM-0Y-Rx6"/>
                         <outlet property="endTimeTextField" destination="xtk-4Y-xtl" id="suJ-uD-0CV"/>
+                        <outlet property="errorMessage" destination="OL6-1I-eMM" id="nbE-TN-vi1"/>
                         <outlet property="eventTitleTextField" destination="8zY-i5-dm0" id="8AL-tZ-34Y"/>
                         <outlet property="locationTitleTextField" destination="mvA-dV-tQd" id="P0r-18-Obf"/>
                         <outlet property="startDateTextField" destination="Taz-SH-rmc" id="oIF-kT-KXY"/>
                         <outlet property="startTimeTextField" destination="EHV-pN-7cY" id="09x-T4-uQx"/>
+                        <segue destination="AfQ-6F-Ca7" kind="show" identifier="posterpretSeque" id="nbf-az-1FR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-YR-Qoy" sceneMemberID="firstResponder"/>
@@ -531,7 +532,7 @@
                                 <state key="normal">
                                     <string key="title">Quick, no?
 Wanna do another?</string>
-                                    <color key="titleColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.94509803921568625" green="0.92941176470588238" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="4HU-v3-NSY"/>
@@ -562,6 +563,6 @@ Wanna do another?</string>
         <image name="homepage" width="1100" height="1140"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4HU-v3-NSY"/>
+        <segue reference="6ON-ZZ-27j"/>
     </inferredMetricsTieBreakers>
 </document>

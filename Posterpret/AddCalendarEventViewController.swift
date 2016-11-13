@@ -13,6 +13,7 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var addToCalButton: UIButton!
+    @IBOutlet weak var errorMessage: UILabel!
     
     // TextField fillers from previous page
     var eventTitle:String = "hi"
@@ -36,19 +37,21 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startDateTextField.delegate = self;
-        self.endDateTextField.delegate = self;
-        self.startTimeTextField.delegate = self;
-        self.endTimeTextField.delegate = self;
-        self.eventTitleTextField.delegate = self;
-        self.locationTitleTextField.delegate = self;
+        self.startDateTextField.delegate = self
+        self.endDateTextField.delegate = self
+        self.startTimeTextField.delegate = self
+        self.endTimeTextField.delegate = self
+        self.eventTitleTextField.delegate = self
+        self.locationTitleTextField.delegate = self
         
-        self.startDateTextField.text = startDate;
-        self.endDateTextField.text = endDate;
-        self.startTimeTextField.text = startTime;
-        self.endTimeTextField.text = endTime;
-        self.eventTitleTextField.text = eventTitle;
-        self.locationTitleTextField.text = location;
+        self.startDateTextField.text = startDate
+        self.endDateTextField.text = endDate
+        self.startTimeTextField.text = startTime
+        self.endTimeTextField.text = endTime
+        self.eventTitleTextField.text = eventTitle
+        self.locationTitleTextField.text = location
+        
+        self.errorMessage.text = ""
         
         addToCalButton.layer.borderWidth = 2
         addToCalButton.layer.cornerRadius = 7
@@ -92,10 +95,11 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
             self.startDateTextField.text! == "" ||
             self.startTimeTextField.text! == "" ||
             self.endDateTextField.text! == "" ||
-            self.endTimeTextField.text! == "" ||
-            self.locationTitleTextField.text! == "") {
+            self.endTimeTextField.text! == ""
+            //|| self.locationTitleTextField.text! == ""
+            ) {
             // Display error message
-            
+            self.errorMessage.text = "Fill in the name and times first!"
             return;
         }
         
@@ -134,7 +138,7 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
                     try eventStore.saveEvent(event, span: .ThisEvent)
                     event_id = event.eventIdentifier
                     
-                    //self.performSegueWithIdentifier("posterpretSeque", sender: nil)
+                    self.performSegueWithIdentifier("posterpretSeque", sender: nil)
                 }
                 catch let error as NSError {
                     print("json error: \(error.localizedDescription)")
@@ -144,6 +148,8 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
                     print("event added !")
                     
                 }
+            } else {
+                self.errorMessage.text = "Pls enable calendar permissions from Settings"
             }
         })
     }

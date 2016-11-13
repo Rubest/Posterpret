@@ -405,7 +405,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
                 index = index.successor()
                 toCheck = upper.substringWithRange(Range(start: index, end: pmRange!.endIndex)).stringByReplacingOccurrencesOfString(" ", withString: "")
-                upper.replaceRange(Range(start: index, end: amRange!.endIndex), with: " ")
+                upper.replaceRange(Range(start: index, end: pmRange!.endIndex), with: " ")
             } else {
                 if (pmRange!.startIndex < amRange!.startIndex) {
                     var index = pmRange!.startIndex.predecessor();
@@ -417,7 +417,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     }
                     index = index.successor()
                     toCheck = upper.substringWithRange(Range(start: index, end: pmRange!.endIndex)).stringByReplacingOccurrencesOfString(" ", withString: "")
-                    upper.replaceRange(Range(start: index, end: amRange!.endIndex), with: " ")
+                    upper.replaceRange(Range(start: index, end: pmRange!.endIndex), with: " ")
                 } else {
                     var index = amRange!.startIndex.predecessor();
                     var curChar = upper[index]
