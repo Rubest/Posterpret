@@ -17,6 +17,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var takePic: UIButton!
     @IBOutlet weak var apiButton: UIButton!
     
+    @IBOutlet weak var posterpretButton: UIButton!
+    @IBOutlet weak var retakeLabel: UILabel!
+    @IBOutlet weak var addPhotoFromLbl: UILabel!
+    @IBOutlet weak var orangeBkgd: UIImageView!
+    
+    
     var imagePicker: UIImagePickerController!
     var counter = 0
     
@@ -29,6 +35,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        
+        img.hidden = false
+        posterpretButton.hidden = false
+        retakeLabel.hidden = false
+        
+        addPhotoFromLbl.hidden = true
+        orangeBkgd.hidden = true
+        
         img.image = image
         counter += 1
         sendImageAPI(image)
