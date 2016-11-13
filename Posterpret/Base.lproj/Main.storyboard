@@ -246,7 +246,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NWm-up-sxL">
                                 <rect key="frame" x="177" y="131" width="300" height="221"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="center" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UTy-U1-yMa">
+                                    <stackView opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UTy-U1-yMa">
                                         <rect key="frame" x="30" y="0.0" width="240" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="event name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a93-pG-toC">
@@ -255,7 +255,7 @@
                                                 <color key="textColor" red="0.57647058823529407" green="0.63921568627450975" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8zY-i5-dm0">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8zY-i5-dm0">
                                                 <rect key="frame" x="130" y="0.0" width="110" height="21"/>
                                                 <color key="textColor" red="0.90980392156862744" green="0.52549019607843139" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="18"/>
@@ -278,7 +278,7 @@
                                                 <color key="textColor" red="0.57647058819999997" green="0.63921568630000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-dV-tQd">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-dV-tQd">
                                                 <rect key="frame" x="130" y="0.0" width="110" height="21"/>
                                                 <color key="textColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="18"/>
@@ -455,6 +455,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="iH6-p6-nI7"/>
+                                    <segue destination="AfQ-6F-Ca7" kind="show" id="zUm-m1-edY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-P3-coj">
@@ -497,17 +498,16 @@
                         <outlet property="locationTitleTextField" destination="mvA-dV-tQd" id="P0r-18-Obf"/>
                         <outlet property="startDateTextField" destination="Taz-SH-rmc" id="oIF-kT-KXY"/>
                         <outlet property="startTimeTextField" destination="EHV-pN-7cY" id="09x-T4-uQx"/>
-                        <segue destination="AfQ-6F-Ca7" kind="show" identifier="eventAdded" id="N5Y-rq-dPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-YR-Qoy" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1058" y="340"/>
         </scene>
-        <!--Add Calendar Event View Controller-->
+        <!--End View Controller-->
         <scene sceneID="e5p-Xb-llv">
             <objects>
-                <viewController id="AfQ-6F-Ca7" customClass="AddCalendarEventViewController" customModule="Posterpret" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AfQ-6F-Ca7" customClass="EndViewController" customModule="Posterpret" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ydW-4Z-zZg"/>
                         <viewControllerLayoutGuide type="bottom" id="dnJ-10-fNB"/>
@@ -531,7 +531,6 @@ Wanna do another?</string>
                                     <color key="titleColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addtoCalendarClicked:" destination="AfQ-6F-Ca7" eventType="touchUpInside" id="QbE-Ff-xtY"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="4HU-v3-NSY"/>
                                 </connections>
                             </button>
@@ -548,9 +547,6 @@ Wanna do another?</string>
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="addToCalButton" destination="RIg-Oc-FMg" id="NMm-Wm-Khh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfz-CS-flU" sceneMemberID="firstResponder"/>
             </objects>
@@ -563,6 +559,6 @@ Wanna do another?</string>
         <image name="homepage" width="1100" height="1140"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6ON-ZZ-27j"/>
+        <segue reference="4HU-v3-NSY"/>
     </inferredMetricsTieBreakers>
 </document>
