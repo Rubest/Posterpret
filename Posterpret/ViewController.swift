@@ -365,9 +365,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let components = NSCalendar.currentCalendar().components([.Year], fromDate: date)
         let year = String(components.year)
         
+        
         // Return proper date if found
         if (foundMonth != nil){
-            return foundMonth! + " " + dateNum + ", " + year
+            let capitalized = String(foundMonth!.characters.prefix(1)).uppercaseString + String(foundMonth!.characters.dropFirst())
+            return capitalized + " " + dateNum + ", " + year
         }
         
         // Otherwise return empty string
