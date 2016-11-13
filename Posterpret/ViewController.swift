@@ -60,11 +60,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         
         img.hidden = false
+        retakeLabel.hidden = false
+
         posterpretButton.hidden = false
         posterpretButton.layer.borderWidth = 3
         posterpretButton.layer.cornerRadius = 10
+        posterpretButton.userInteractionEnabled = false
+        posterpretButton.setTitleColor(UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0), forState: UIControlState.Normal)
         posterpretButton.layer.borderColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0).CGColor
-        retakeLabel.hidden = false
+//        posterpretButton.setTitle("Processing", forState: UIControlState.Disabled)
+//        posterpretButton.setTitleColor(UIColor(red:0.75, green:0.75, blue:0.75, alpha:1.0), forState: UIControlState.Disabled)
+//        posterpretButton.layer.borderColor = UIColor(red:0.75, green:0.75, blue:0.75, alpha:1.0).CGColor
         
         addPhotoFromLbl.hidden = true
         orangeBkgd.hidden = true
@@ -175,7 +181,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.date = self.findADate(final)
                     self.autofillCalendar(final)
                     self.natLang(final);
-                    
+//                    self.posterpretButton.setTitle("Posterpret It!", forState: UIControlState.Normal)
+//                    self.posterpretButton.setTitleColor(UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0), forState: UIControlState.Normal)
+//                    self.posterpretButton.layer.borderColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0).CGColor
+                    self.posterpretButton.userInteractionEnabled = true
+
+                    print("gets here")
                     
                 } catch {
                     final = ""
@@ -267,8 +278,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-   
-    
     
     func findADate(txt: String) -> String {
         
@@ -337,9 +346,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return ""
         
     }
-    
-    
-    
     
     
     
