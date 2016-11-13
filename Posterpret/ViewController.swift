@@ -43,6 +43,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         img.hidden = false
         posterpretButton.hidden = false
+        posterpretButton.layer.borderWidth = 3
+        posterpretButton.layer.cornerRadius = 10
+        posterpretButton.layer.borderColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0).CGColor
         retakeLabel.hidden = false
         
         addPhotoFromLbl.hidden = true
