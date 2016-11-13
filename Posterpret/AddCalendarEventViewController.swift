@@ -14,6 +14,13 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var addToCalButton: UIButton!
     
+    // TextField fillers from previous page
+    var eventTitle:String = "hi"
+    var location:String = "hi"
+    var startTime: String = "hi"
+    var endTime:String = "hi"
+    var startDate:String = "hi"
+    var endDate:String = "ho"
     
     // Current active textField
     var firstResponderATM: UITextField!
@@ -31,11 +38,19 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         
         self.startDateTextField.delegate = self;
         self.endDateTextField.delegate = self;
-        
         self.startTimeTextField.delegate = self;
         self.endTimeTextField.delegate = self;
         self.eventTitleTextField.delegate = self;
         self.locationTitleTextField.delegate = self;
+        
+        self.startDateTextField.text = startDate;
+        self.endDateTextField.text = endDate;
+        self.startTimeTextField.text = startTime;
+        self.endTimeTextField.text = endTime;
+        self.eventTitleTextField.text = eventTitle;
+        self.locationTitleTextField.text = location;
+        
+        
         
         
 //        let dateFormatter = NSDateFormatter()
