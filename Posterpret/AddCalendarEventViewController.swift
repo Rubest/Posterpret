@@ -50,7 +50,9 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         self.eventTitleTextField.text = eventTitle;
         self.locationTitleTextField.text = location;
         
-        
+        addToCalButton.layer.borderWidth = 2
+        addToCalButton.layer.cornerRadius = 7
+        addToCalButton.layer.borderColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0).CGColor
         
         
 //        let dateFormatter = NSDateFormatter()
