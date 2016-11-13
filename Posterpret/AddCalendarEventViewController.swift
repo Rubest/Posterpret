@@ -168,6 +168,8 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
+        
+        firstResponderATM.textColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0)
     }
     
     func datePickerViewDisplayer(sender: UITextField) {
@@ -231,6 +233,8 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         dateFormatter.dateStyle = NSDateFormatterStyle.NoStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
+        
+        firstResponderATM.textColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0)
     }
     
     func timePickerViewDisplayer(sender: UITextField) {
