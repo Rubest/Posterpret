@@ -12,6 +12,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var startTime: String = "";
     var endTime:String = "";
+    var eventTitle:String = "";
+    var date:String = "";
     
     @IBOutlet weak var testimg: UIImageView!
     
@@ -134,7 +136,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     return
                 }
                 
-                let final:String;
+                var final:String;
                 do {
                     
                     let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
@@ -144,9 +146,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         final = ""
                     } else {
                         let third = (((snd[0] as! [String: AnyObject]).first!.1 as! [AnyObject])[0]) as! [String:AnyObject]
-                        final = (third["description"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: " ")
+                        final = (third["description"]! as! String)
+                        self.eventTitle = final.componentsSeparatedByString("\n")[0]
+                        final = final.stringByReplacingOccurrencesOfString("\n", withString: " ")
                     }
+                    self.date = self.findADate(final)
+                    self.autofillCalendar(final)
                     self.natLang(final);
+                    
+                    
                     
                 } catch {
                     final = ""
