@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -101,17 +101,6 @@
                                     <constraint firstAttribute="height" constant="261" id="w6c-Oe-eCn"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8c-Vz-Erd">
-                                <rect key="frame" x="20" y="28" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="VPp-Q2-9Va"/>
-                                    <constraint firstAttribute="height" constant="30" id="n5B-95-cCW"/>
-                                </constraints>
-                                <state key="normal" title="API"/>
-                                <connections>
-                                    <action selector="apiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="as0-VM-lMJ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ADD PHOTO FROM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0N-CV-PoX">
                                 <rect key="frame" x="145" y="366" width="284" height="67"/>
                                 <constraints>
@@ -125,7 +114,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="bottom" spacing="125" translatesAutoresizingMaskIntoConstraints="NO" id="XhJ-Sw-uWX">
                                 <rect key="frame" x="140" y="474" width="295" height="106"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oK3-bC-xeB">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oK3-bC-xeB">
                                         <rect key="frame" x="0.0" y="17" width="77" height="89"/>
                                         <subviews>
                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-ra-kBh">
@@ -166,7 +155,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-C8-Mr7">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-C8-Mr7">
                                         <rect key="frame" x="202" y="0.0" width="93" height="106"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ0-Fg-RUj">
@@ -194,7 +183,7 @@
                                                     <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j5b-PR-Hao"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GALLERY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPJ-t5-kWT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GALLERY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPJ-t5-kWT">
                                                 <rect key="frame" x="0.0" y="79" width="93" height="27"/>
                                                 <fontDescription key="fontDescription" name="Crushed-Regular" family="Crushed" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -208,8 +197,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MMA-IE-4Z3" secondAttribute="bottom" constant="20" id="2Ln-Rf-fxA"/>
-                            <constraint firstItem="w8c-Vz-Erd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="41A-PD-YJ9"/>
-                            <constraint firstItem="w8c-Vz-Erd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="An8-Uc-g3B"/>
                             <constraint firstItem="MMA-IE-4Z3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ct3-fx-fQb"/>
                             <constraint firstItem="FHi-E0-MaS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E3W-LS-wef"/>
                             <constraint firstItem="x0N-CV-PoX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H8P-gt-izj"/>
@@ -218,7 +205,6 @@
                             <constraint firstItem="MMA-IE-4Z3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="U65-ig-tBy"/>
                             <constraint firstItem="XhJ-Sw-uWX" firstAttribute="top" secondItem="x0N-CV-PoX" secondAttribute="bottom" constant="41" id="Zaq-h9-ge5"/>
                             <constraint firstItem="XhJ-Sw-uWX" firstAttribute="top" secondItem="qnr-6X-jOy" secondAttribute="bottom" constant="40" id="d8M-EY-lGY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w8c-Vz-Erd" secondAttribute="bottom" constant="20" id="fWU-8W-tqA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XhJ-Sw-uWX" secondAttribute="bottom" constant="30" id="gHN-Vg-2e9"/>
                             <constraint firstItem="FHi-E0-MaS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hc2-KZ-2Uj"/>
                             <constraint firstItem="XhJ-Sw-uWX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r18-55-mHg"/>
@@ -226,14 +212,12 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Ntq-Gu-oqQ"/>
-                                <exclude reference="fWU-8W-tqA"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="addImg" destination="tJ0-Fg-RUj" id="jmd-gF-ui8"/>
                         <outlet property="addPhotoFromLbl" destination="x0N-CV-PoX" id="gjI-HD-31B"/>
-                        <outlet property="apiButton" destination="w8c-Vz-Erd" id="ZQd-b7-yRy"/>
                         <outlet property="img" destination="FHi-E0-MaS" id="1j5-8f-3VT"/>
                         <outlet property="orangeBkgd" destination="MMA-IE-4Z3" id="6h2-q9-YLO"/>
                         <outlet property="posterpretButton" destination="ecK-pN-73W" id="5xl-W0-Rdg"/>
@@ -264,7 +248,7 @@
                                     <stackView opaque="NO" contentMode="center" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UTy-U1-yMa">
                                         <rect key="frame" x="30" y="0.0" width="240" height="21"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="event name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a93-pG-toC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="event name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a93-pG-toC">
                                                 <rect key="frame" x="0.0" y="1" width="110" height="21"/>
                                                 <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="18"/>
                                                 <color key="textColor" red="0.57647058823529407" green="0.63921568627450975" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
@@ -427,13 +411,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wVZ-sn-Bxk">
                                 <rect key="frame" x="35" y="40" width="175" height="61"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is what we got!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHo-5N-Bnq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This is what we got!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHo-5N-Bnq">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
                                         <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="18"/>
                                         <color key="textColor" red="0.94509803921568625" green="0.92941176470588238" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Correct any information," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebF-ez-jpM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Correct any information," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebF-ez-jpM">
                                         <rect key="frame" x="0.0" y="41" width="175" height="21"/>
                                         <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="18"/>
                                         <color key="textColor" red="0.94509803920000002" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>

@@ -21,7 +21,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var addImg: UIButton!
     @IBOutlet weak var takePic: UIButton!
-    @IBOutlet weak var apiButton: UIButton!
     
     @IBOutlet weak var posterpretButton: UIButton!
     @IBOutlet weak var retakeLabel: UILabel!
@@ -92,25 +91,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         takePic.setTitle("", forState: .Normal)
     }
     
-    
-//    @IBAction func apiButton(sender: AnyObject) {
-//        let jsonRequest: [String: AnyObject] = [
-//            "requests": [
-//                "features": [
-//                "type":"TEXT_DETECTION"
-//            ],
-//            "image": [
-//            "source": [
-//            "gcsImageUri":"gs://posterpret-buck/myObject\(counter).jpeg"
-//        ]
-//        ]
-//        ]
-//        ]
-//        
-//        data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: jsonRequest);
-//    }
-    
-    
     func sendImageAPI(image: UIImage) {
         let url = NSURL(string: "https://www.googleapis.com/upload/storage/v1/b/posterpret-buck/o?uploadType=media&name=myObject\(counter).jpeg")!
         let request = NSMutableURLRequest(URL: url)
@@ -155,19 +135,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func data_request(url_to_request: String, json: AnyObject) {
-        
-//        let json = [
-//            "requests": [
-//                "features": [
-//                "type":"TEXT_DETECTION"
-//            ],
-//            "image": [
-//            "source": [
-//            "gcsImageUri":"gs://posterpret-buck/poster.png"
-//        ]
-//        ]
-//        ]
-//        ]
         
         let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(json)
         
@@ -214,22 +181,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     final = ""
                 }
                 
-//                do {
-////                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
-////                    
-////                    print("Result -> \(result)")
-//                    
-//                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
-//                    let snd = result!.first!.1 as! [AnyObject]
-//                    let third = (((snd[0] as! [String: AnyObject]).first!.1 as! [AnyObject])[0]) as! [String:AnyObject]
-//                    let final = (third["description"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: " ")
-//                    print(final)
-//                    
-//                    self.natLang(final);
-//                    
-//                } catch {
-//                    print("Error -> \(error)")
-//                }
             }
             task.resume()
         } catch {
@@ -260,20 +211,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             ],
             "encodingType":"UTF8"
         ]
-//        print("\(text)")
         nat_lang_request("https://language.googleapis.com/v1beta1/documents:analyzeEntities?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: text);
     }
     
     func nat_lang_request(url_to_request: String, json: AnyObject) {
         
-//        let json = [
-//            "document": [
-//                "type": "PLAIN_TEXT",
-//                "language": "EN",
-//                "content": "Hello my name is Noah!!!"
-//            ],
-//            "encodingType":"UTF8"
-//        ]
         print("\(json)")
         
         let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(json)
@@ -395,7 +337,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return ""
         
     }
-
     
     
     
