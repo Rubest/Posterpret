@@ -57,7 +57,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             ],
             "image": [
             "source": [
-            "gcsImageUri":"gs://posterpret-buck/poster.png"
+            "gcsImageUri":"gs://posterpret-buck/myObject\(counter).jpeg"
         ]
         ]
         ]
