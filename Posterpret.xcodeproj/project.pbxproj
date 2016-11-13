@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E5356901DD7FA31006D18C0 /* Share-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E53568F1DD7FA31006D18C0 /* Share-Regular.ttf */; };
-		8E5356921DD80E8F006D18C0 /* Crushed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E5356911DD80E8F006D18C0 /* Crushed.ttf */; };
-		8E5356941DD80EAD006D18C0 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E5356931DD80EAD006D18C0 /* Lato-Regular.ttf */; };
 		A15A2F191DD6D6D2001850D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F181DD6D6D2001850D3 /* AppDelegate.swift */; };
 		A15A2F1B1DD6D6D2001850D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F1A1DD6D6D2001850D3 /* ViewController.swift */; };
 		A15A2F1E1DD6D6D2001850D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15A2F1C1DD6D6D2001850D3 /* Main.storyboard */; };
@@ -19,6 +16,7 @@
 		A15A2F311DD6D6D2001850D3 /* PosterpretTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F301DD6D6D2001850D3 /* PosterpretTests.swift */; };
 		A15A2F3C1DD6D6D2001850D3 /* PosterpretUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F3B1DD6D6D2001850D3 /* PosterpretUITests.swift */; };
 		A15A2F4A1DD6DFA5001850D3 /* AddCalendarEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F491DD6DFA4001850D3 /* AddCalendarEventViewController.swift */; };
+		A15A2F4C1DD821F1001850D3 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A15A2F4B1DD821F1001850D3 /* Fonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8E53568F1DD7FA31006D18C0 /* Share-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Share-Regular.ttf"; path = "../../../../Downloads/Share/Share-Regular.ttf"; sourceTree = "<group>"; };
-		8E5356911DD80E8F006D18C0 /* Crushed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Crushed.ttf; path = ../../../../Downloads/fonts/Crushed/Crushed.ttf; sourceTree = "<group>"; };
-		8E5356931DD80EAD006D18C0 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../../../../Downloads/fonts/Lato/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		A15A2F151DD6D6D2001850D3 /* Posterpret.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Posterpret.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15A2F181DD6D6D2001850D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A15A2F1A1DD6D6D2001850D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +52,7 @@
 		A15A2F3B1DD6D6D2001850D3 /* PosterpretUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterpretUITests.swift; sourceTree = "<group>"; };
 		A15A2F3D1DD6D6D2001850D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15A2F491DD6DFA4001850D3 /* AddCalendarEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCalendarEventViewController.swift; sourceTree = "<group>"; };
+		A15A2F4B1DD821F1001850D3 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +87,6 @@
 				A15A2F2F1DD6D6D2001850D3 /* PosterpretTests */,
 				A15A2F3A1DD6D6D2001850D3 /* PosterpretUITests */,
 				A15A2F161DD6D6D2001850D3 /* Products */,
-				8E53568F1DD7FA31006D18C0 /* Share-Regular.ttf */,
-				8E5356911DD80E8F006D18C0 /* Crushed.ttf */,
-				8E5356931DD80EAD006D18C0 /* Lato-Regular.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +103,7 @@
 		A15A2F171DD6D6D2001850D3 /* Posterpret */ = {
 			isa = PBXGroup;
 			children = (
+				A15A2F4B1DD821F1001850D3 /* Fonts */,
 				A15A2F181DD6D6D2001850D3 /* AppDelegate.swift */,
 				A15A2F1A1DD6D6D2001850D3 /* ViewController.swift */,
 				A15A2F491DD6DFA4001850D3 /* AddCalendarEventViewController.swift */,
@@ -245,11 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15A2F261DD6D6D2001850D3 /* LaunchScreen.storyboard in Resources */,
-				8E5356941DD80EAD006D18C0 /* Lato-Regular.ttf in Resources */,
-				8E5356921DD80E8F006D18C0 /* Crushed.ttf in Resources */,
 				A15A2F231DD6D6D2001850D3 /* Assets.xcassets in Resources */,
 				A15A2F1E1DD6D6D2001850D3 /* Main.storyboard in Resources */,
-				8E5356901DD7FA31006D18C0 /* Share-Regular.ttf in Resources */,
+				A15A2F4C1DD821F1001850D3 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
