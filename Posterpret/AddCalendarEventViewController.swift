@@ -142,6 +142,7 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
                 }
                 catch let error as NSError {
                     print("json error: \(error.localizedDescription)")
+                    self.errorMessage.text = "\(error.localizedDescription)"
                 }
                 
                 if(event_id != ""){

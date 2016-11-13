@@ -308,10 +308,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     
-    func findADate(txt: String) -> String {
-        
-        let arrayOfMonthOptions: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-        
+    func findADate(txtStr: String) -> String {
+        let txt = txtStr.lowercaseString
+        let arrayOfMonthOptions: [String] = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"]
         
         var foundMonth : String? = nil
         var dateNum : String = ""
