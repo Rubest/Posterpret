@@ -6,6 +6,12 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Crushed.ttf">
+            <string>Crushed-Regular</string>
+            <string>Crushed-Regular</string>
+            <string>Crushed-Regular</string>
+            <string>Crushed-Regular</string>
+        </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </mutableArray>
@@ -42,60 +48,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHi-E0-MaS">
-                                <rect key="frame" x="181" y="174" width="239" height="251"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FHi-E0-MaS">
+                                <rect key="frame" x="175" y="28" width="250" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="251" id="bBM-7a-GLf"/>
                                     <constraint firstAttribute="width" constant="239" id="gRP-gK-D13"/>
+                                    <constraint firstAttribute="height" constant="275" id="nqn-3a-Gf8"/>
+                                    <constraint firstAttribute="width" constant="250" id="zGk-EH-bXa"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bBM-7a-GLf"/>
+                                        <exclude reference="gRP-gK-D13"/>
+                                    </mask>
+                                </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ0-Fg-RUj">
-                                <rect key="frame" x="239" y="280" width="123" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="45M-8b-41b"/>
-                                    <constraint firstAttribute="height" constant="39" id="e2r-mc-Hwb"/>
-                                    <constraint firstAttribute="height" constant="39" id="tkI-j4-kOe"/>
-                                    <constraint firstAttribute="width" constant="94" id="zO6-dW-Nds"/>
-                                </constraints>
-                                <state key="normal" title="Upload a Picture"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="tkI-j4-kOe"/>
-                                        <exclude reference="zO6-dW-Nds"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j5b-PR-Hao"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-ra-kBh">
-                                <rect key="frame" x="239" y="433" width="123" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="WXF-RC-j6c"/>
-                                    <constraint firstAttribute="width" constant="94" id="Wdf-fU-VJB"/>
-                                    <constraint firstAttribute="height" constant="39" id="hZm-rT-atA"/>
-                                    <constraint firstAttribute="height" constant="39" id="oji-th-JLe"/>
-                                </constraints>
-                                <state key="normal" title="Take a Picture"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Wdf-fU-VJB"/>
-                                        <exclude reference="hZm-rT-atA"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9OI-Mt-Yx1"/>
-                                    <action selector="takePic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5I-bW-5wB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-pN-73W">
-                                <rect key="frame" x="351" y="510" width="229" height="70"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="48"/>
-                                <state key="normal" title="Posterpret"/>
-                                <connections>
-                                    <segue destination="yGu-14-dZK" kind="show" id="dkL-JU-fer"/>
-                                </connections>
-                            </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qnr-6X-jOy">
+                                <rect key="frame" x="167" y="334" width="267" height="117"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-pN-73W">
+                                        <rect key="frame" x="0.0" y="0.0" width="267" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="eKP-h6-Wgc"/>
+                                            <constraint firstAttribute="width" constant="267" id="jsz-jG-K6E"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="48"/>
+                                        <state key="normal" title="Posterpret!">
+                                            <color key="titleColor" red="0.90980392160000001" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="yGu-14-dZK" kind="show" id="dkL-JU-fer"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or retake?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaO-tK-9ER">
+                                        <rect key="frame" x="61" y="70" width="146" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="146" id="Log-0u-XiK"/>
+                                            <constraint firstAttribute="height" constant="47" id="bbi-ki-FmS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Crushed-Regular" family="Crushed" pointSize="36"/>
+                                        <color key="textColor" red="0.57647058823529407" green="0.63921568627450975" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8c-Vz-Erd">
                                 <rect key="frame" x="20" y="28" width="46" height="30"/>
                                 <constraints>
@@ -107,20 +103,107 @@
                                     <action selector="apiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="as0-VM-lMJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD PHOTO FROM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0N-CV-PoX">
+                                <rect key="frame" x="-49" y="140" width="284" height="67"/>
+                                <fontDescription key="fontDescription" name="Crushed-Regular" family="Crushed" pointSize="48"/>
+                                <color key="textColor" red="0.94509803921568625" green="0.92941176470588238" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="bottom" spacing="125" translatesAutoresizingMaskIntoConstraints="NO" id="XhJ-Sw-uWX">
+                                <rect key="frame" x="140" y="474" width="295" height="106"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oK3-bC-xeB">
+                                        <rect key="frame" x="0.0" y="17" width="77" height="89"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-ra-kBh">
+                                                <rect key="frame" x="0.0" y="0.0" width="77" height="63"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="123" id="WXF-RC-j6c"/>
+                                                    <constraint firstAttribute="width" constant="94" id="Wdf-fU-VJB"/>
+                                                    <constraint firstAttribute="width" constant="77" id="XNL-Qf-e32"/>
+                                                    <constraint firstAttribute="height" constant="39" id="hZm-rT-atA"/>
+                                                    <constraint firstAttribute="height" constant="39" id="oji-th-JLe"/>
+                                                    <constraint firstAttribute="height" constant="63" id="vEJ-Qj-CTm"/>
+                                                </constraints>
+                                                <state key="normal" image="camera">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="WXF-RC-j6c"/>
+                                                        <exclude reference="Wdf-fU-VJB"/>
+                                                        <exclude reference="hZm-rT-atA"/>
+                                                        <exclude reference="oji-th-JLe"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9OI-Mt-Yx1"/>
+                                                    <action selector="takePic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5I-bW-5wB"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAMERA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DV-fl-EjU">
+                                                <rect key="frame" x="0.0" y="68" width="77" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="68" id="eIy-yf-UGC"/>
+                                                    <constraint firstAttribute="height" constant="21" id="lQO-yP-qdM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Crushed-Regular" family="Crushed" pointSize="24"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-C8-Mr7">
+                                        <rect key="frame" x="202" y="0.0" width="93" height="106"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ0-Fg-RUj">
+                                                <rect key="frame" x="0.0" y="0.0" width="93" height="89"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="123" id="45M-8b-41b"/>
+                                                    <constraint firstAttribute="height" constant="89" id="Uvy-gT-9hZ"/>
+                                                    <constraint firstAttribute="height" constant="39" id="e2r-mc-Hwb"/>
+                                                    <constraint firstAttribute="width" constant="93" id="rBr-90-HFE"/>
+                                                    <constraint firstAttribute="height" constant="39" id="tkI-j4-kOe"/>
+                                                    <constraint firstAttribute="width" constant="94" id="zO6-dW-Nds"/>
+                                                </constraints>
+                                                <state key="normal" image="gallery">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="45M-8b-41b"/>
+                                                        <exclude reference="e2r-mc-Hwb"/>
+                                                        <exclude reference="tkI-j4-kOe"/>
+                                                        <exclude reference="zO6-dW-Nds"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="addImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j5b-PR-Hao"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GALLERY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPJ-t5-kWT">
+                                                <rect key="frame" x="0.0" y="79" width="93" height="27"/>
+                                                <fontDescription key="fontDescription" name="Crushed-Regular" family="Crushed" pointSize="24"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="w8c-Vz-Erd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="41A-PD-YJ9"/>
-                            <constraint firstItem="XiW-ra-kBh" firstAttribute="top" secondItem="FHi-E0-MaS" secondAttribute="bottom" constant="8" id="8yx-7o-eFp"/>
                             <constraint firstItem="w8c-Vz-Erd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="An8-Uc-g3B"/>
                             <constraint firstItem="FHi-E0-MaS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E3W-LS-wef"/>
-                            <constraint firstItem="tJ0-Fg-RUj" firstAttribute="centerX" secondItem="FHi-E0-MaS" secondAttribute="centerX" id="J81-7e-XB3"/>
-                            <constraint firstItem="ecK-pN-73W" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="LUL-V0-Lb9"/>
                             <constraint firstItem="FHi-E0-MaS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ntq-Gu-oqQ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecK-pN-73W" secondAttribute="bottom" constant="20" id="Yg5-VP-UOq"/>
-                            <constraint firstItem="XiW-ra-kBh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fK5-Pa-Ghl"/>
+                            <constraint firstItem="qnr-6X-jOy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TK3-lO-DMR"/>
+                            <constraint firstItem="XhJ-Sw-uWX" firstAttribute="top" secondItem="qnr-6X-jOy" secondAttribute="bottom" constant="23" id="d8M-EY-lGY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w8c-Vz-Erd" secondAttribute="bottom" constant="20" id="fWU-8W-tqA"/>
-                            <constraint firstItem="tJ0-Fg-RUj" firstAttribute="centerY" secondItem="FHi-E0-MaS" secondAttribute="centerY" id="tEx-aP-E2V"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XhJ-Sw-uWX" secondAttribute="bottom" constant="20" id="gHN-Vg-2e9"/>
+                            <constraint firstItem="FHi-E0-MaS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hc2-KZ-2Uj"/>
+                            <constraint firstItem="XhJ-Sw-uWX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r18-55-mHg"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -403,4 +486,8 @@
             <point key="canvasLocation" x="1076" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="78" height="65"/>
+        <image name="gallery" width="514" height="514"/>
+    </resources>
 </document>
