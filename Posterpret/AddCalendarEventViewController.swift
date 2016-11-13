@@ -131,13 +131,16 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
                 do{
                     try eventStore.saveEvent(event, span: .ThisEvent)
                     event_id = event.eventIdentifier
+                    
+                    self.performSegueWithIdentifier("posterpretSeque", sender: nil)
                 }
                 catch let error as NSError {
                     print("json error: \(error.localizedDescription)")
                 }
                 
                 if(event_id != ""){
-                    print("event added !")    
+                    print("event added !")
+                    
                 }
             }
         })

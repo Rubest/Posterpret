@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,6 +16,7 @@
             <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="Share-Regular.ttf">
+            <string>Share-Regular</string>
             <string>Share-Regular</string>
             <string>Share-Regular</string>
             <string>Share-Regular</string>
@@ -454,7 +455,17 @@
                                 </state>
                                 <connections>
                                     <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="iH6-p6-nI7"/>
-                                    <segue destination="AfQ-6F-Ca7" kind="show" id="5Rh-kO-6Zx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-P3-coj">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="37"/>
+                                <fontDescription key="fontDescription" name="Share-Regular" family="Share" pointSize="17"/>
+                                <state key="normal" title="&lt; back">
+                                    <color key="titleColor" red="0.57647058823529407" green="0.63921568627450975" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addtoCalendarClicked:" destination="yGu-14-dZK" eventType="touchUpInside" id="4CN-TV-7ly"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="6ON-ZZ-27j"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -464,11 +475,13 @@
                             <constraint firstItem="NWm-up-sxL" firstAttribute="top" secondItem="wVZ-sn-Bxk" secondAttribute="bottom" constant="30" id="CFE-R9-ute"/>
                             <constraint firstItem="qWH-ot-dU4" firstAttribute="centerX" secondItem="Ncy-iK-fFb" secondAttribute="centerX" id="Efd-yD-92Z"/>
                             <constraint firstItem="BWn-aa-3jx" firstAttribute="top" secondItem="NWm-up-sxL" secondAttribute="bottom" constant="30" id="Oi0-Jr-ybl"/>
+                            <constraint firstItem="DPf-P3-coj" firstAttribute="top" secondItem="Ncy-iK-fFb" secondAttribute="top" constant="15" id="Tin-TP-sXO"/>
                             <constraint firstItem="WBh-tW-hDU" firstAttribute="top" secondItem="qWH-ot-dU4" secondAttribute="bottom" constant="20" id="X9V-Vw-E3q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qWH-ot-dU4" secondAttribute="trailing" id="YG3-hp-AXR"/>
                             <constraint firstItem="wVZ-sn-Bxk" firstAttribute="top" secondItem="iPo-3g-fWS" secondAttribute="bottom" constant="20" id="k3y-oV-eTC"/>
                             <constraint firstItem="BWn-aa-3jx" firstAttribute="leading" secondItem="Ncy-iK-fFb" secondAttribute="leadingMargin" constant="30" id="nRx-cd-oj3"/>
                             <constraint firstItem="NWm-up-sxL" firstAttribute="centerX" secondItem="Ncy-iK-fFb" secondAttribute="centerX" id="tcF-mW-Tk7"/>
+                            <constraint firstItem="DPf-P3-coj" firstAttribute="leading" secondItem="Ncy-iK-fFb" secondAttribute="leading" constant="10" id="vw9-j5-MlE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -484,11 +497,12 @@
                         <outlet property="locationTitleTextField" destination="mvA-dV-tQd" id="P0r-18-Obf"/>
                         <outlet property="startDateTextField" destination="Taz-SH-rmc" id="oIF-kT-KXY"/>
                         <outlet property="startTimeTextField" destination="EHV-pN-7cY" id="09x-T4-uQx"/>
+                        <segue destination="AfQ-6F-Ca7" kind="show" identifier="eventAdded" id="N5Y-rq-dPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-YR-Qoy" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021" y="347"/>
+            <point key="canvasLocation" x="1058" y="340"/>
         </scene>
         <!--Add Calendar Event View Controller-->
         <scene sceneID="e5p-Xb-llv">
@@ -518,6 +532,7 @@ Wanna do another?</string>
                                 </state>
                                 <connections>
                                     <action selector="addtoCalendarClicked:" destination="AfQ-6F-Ca7" eventType="touchUpInside" id="QbE-Ff-xtY"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="4HU-v3-NSY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -539,7 +554,7 @@ Wanna do another?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfz-CS-flU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="347"/>
+            <point key="canvasLocation" x="1775" y="340"/>
         </scene>
     </scenes>
     <resources>
@@ -547,4 +562,7 @@ Wanna do another?</string>
         <image name="gallery" width="514" height="514"/>
         <image name="homepage" width="1100" height="1140"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6ON-ZZ-27j"/>
+    </inferredMetricsTieBreakers>
 </document>
