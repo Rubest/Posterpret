@@ -43,6 +43,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Share-Regular.ttf</string>
+		<string>Crushed.ttf</string>
+		<string>Lato-Regular.ttf</string>
+	</array>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Need access to the calendar to create your event from the poster or flyer</string>
 </dict>

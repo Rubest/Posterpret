@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E5356901DD7FA31006D18C0 /* Share-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E53568F1DD7FA31006D18C0 /* Share-Regular.ttf */; };
+		8E5356921DD80E8F006D18C0 /* Crushed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E5356911DD80E8F006D18C0 /* Crushed.ttf */; };
+		8E5356941DD80EAD006D18C0 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E5356931DD80EAD006D18C0 /* Lato-Regular.ttf */; };
 		A15A2F191DD6D6D2001850D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F181DD6D6D2001850D3 /* AppDelegate.swift */; };
 		A15A2F1B1DD6D6D2001850D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A2F1A1DD6D6D2001850D3 /* ViewController.swift */; };
 		A15A2F1E1DD6D6D2001850D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15A2F1C1DD6D6D2001850D3 /* Main.storyboard */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E53568F1DD7FA31006D18C0 /* Share-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Share-Regular.ttf"; path = "../../../../Downloads/Share/Share-Regular.ttf"; sourceTree = "<group>"; };
+		8E5356911DD80E8F006D18C0 /* Crushed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Crushed.ttf; path = ../../../../Downloads/fonts/Crushed/Crushed.ttf; sourceTree = "<group>"; };
+		8E5356931DD80EAD006D18C0 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../../../../Downloads/fonts/Lato/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		A15A2F151DD6D6D2001850D3 /* Posterpret.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Posterpret.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15A2F181DD6D6D2001850D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A15A2F1A1DD6D6D2001850D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,9 @@
 				A15A2F2F1DD6D6D2001850D3 /* PosterpretTests */,
 				A15A2F3A1DD6D6D2001850D3 /* PosterpretUITests */,
 				A15A2F161DD6D6D2001850D3 /* Products */,
+				8E53568F1DD7FA31006D18C0 /* Share-Regular.ttf */,
+				8E5356911DD80E8F006D18C0 /* Crushed.ttf */,
+				8E5356931DD80EAD006D18C0 /* Lato-Regular.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,8 +245,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15A2F261DD6D6D2001850D3 /* LaunchScreen.storyboard in Resources */,
+				8E5356941DD80EAD006D18C0 /* Lato-Regular.ttf in Resources */,
+				8E5356921DD80E8F006D18C0 /* Crushed.ttf in Resources */,
 				A15A2F231DD6D6D2001850D3 /* Assets.xcassets in Resources */,
 				A15A2F1E1DD6D6D2001850D3 /* Main.storyboard in Resources */,
+				8E5356901DD7FA31006D18C0 /* Share-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

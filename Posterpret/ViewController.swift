@@ -32,7 +32,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         img.image = image
         counter += 1
         sendImageAPI(image)
-        testimg.image = image
     }
     
     @IBAction func addImg(sender: AnyObject) {
