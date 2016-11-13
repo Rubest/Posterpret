@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var startTime: String = "";
+    var endTime:String = "";
+    
     @IBOutlet weak var testimg: UIImageView!
     
     @IBOutlet weak var img: UIImageView!
@@ -247,6 +250,179 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print(error)
         }
     }
+    
+    
+   
+    
+    
+    func findADate(txt: String) -> String {
+        
+        let arrayOfMonthOptions: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+        
+        
+        var foundMonth : String? = nil
+        var dateNum : String = ""
+        
+        // iterate over every possible month (for now, disregarding number months)
+        for month in arrayOfMonthOptions {
+            let search = (txt.rangeOfString(month))
+            if ((search) != nil){
+                //let stIndex: String.CharacterView.Index = search!.startIndex
+                let enIndex: String.CharacterView.Index = search!.endIndex
+                
+                let wordsAfterMonth = txt.substringWithRange(enIndex ..< txt.endIndex)
+                
+                var frstNum = -1
+                var scndNum = -1
+                var counter = 0
+                
+                // Check next three characters for numbers
+                for c in wordsAfterMonth.characters {
+                    counter += 1
+                    // try converting character to int
+                    let num:Int? = Int(String(c))
+                    if (frstNum == -1 && num != nil) {
+                        frstNum = num!
+                    } else if (frstNum != -1 && scndNum == -1 && num != nil) {
+                        scndNum = num!
+                        break
+                    }
+                    // Stop looking after 3 characters
+                    if (counter >= 3) {
+                        break
+                    }
+                }
+                
+                // one digit number
+                if (frstNum != -1 && scndNum == -1) {
+                    foundMonth = month
+                    dateNum = String(frstNum)
+                    break
+                }
+                    // two digit number
+                else if (frstNum != -1 && scndNum != -1) {
+                    foundMonth = month
+                    dateNum = String(10*frstNum + scndNum)
+                    break
+                }
+            }
+        }
+        
+        // get current year
+        let date = NSDate()
+        let components = NSCalendar.currentCalendar().components([.Year], fromDate: date)
+        let year = String(components.year)
+        
+        // Return proper date if found
+        if (foundMonth != nil){
+            return foundMonth! + " " + dateNum + ", " + year
+        }
+        
+        // Otherwise return empty string
+        return ""
+        
+    }
+
+    
+    
+    
+    
+    
+    
+    func autofillCalendar(input: String) {
+        var upper = input.uppercaseString
+        var state = 0
+        
+        while (state < 2) {
+            let pmRange = upper.rangeOfString("PM")
+            let amRange = upper.rangeOfString("AM")
+            var toCheck = ""
+            if ((pmRange == nil) && (amRange == nil)) { return }
+            else if (pmRange == nil) {
+                //let bef = upper.substringToIndex(amRange!.startIndex)
+                var index = amRange!.startIndex.predecessor();
+                var curChar = upper[index]
+                let startIdx = upper.startIndex;
+                while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                    index = index.predecessor()
+                    curChar = upper[index]
+                }
+                index = index.successor()
+                toCheck = upper.substringWithRange(Range(start: index, end: amRange!.endIndex)).stringByReplacingOccurrencesOfString(" ", withString: "")
+                upper.replaceRange(Range(start: index, end: amRange!.endIndex), with: " ")
+                //foundStart = true
+                
+            } else if (amRange == nil) {
+                var index = pmRange!.startIndex.predecessor();
+                var curChar = upper[index]
+                let startIdx = upper.startIndex;
+                while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                    index = index.predecessor()
+                    curChar = upper[index]
+                }
+                index = index.successor()
+                toCheck = upper.substringWithRange(Range(start: index, end: pmRange!.endIndex)).stringByReplacingOccurrencesOfString(" ", withString: "")
+                upper.replaceRange(Range(start: index, end: amRange!.endIndex), with: " ")
+            } else {
+                if (pmRange!.startIndex < amRange!.startIndex) {
+                    var index = pmRange!.startIndex.predecessor();
+                    var curChar = upper[index]
+                    let startIdx = upper.startIndex;
+                    while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                        index = index.predecessor()
+                        curChar = upper[index]
+                    }
+                    index = index.successor()
+                    toCheck = upper.substringWithRange(Range(start: index, end: pmRange!.endIndex)).stringByReplacingOccurrencesOfString(" ", withString: "")
+                    upper.replaceRange(Range(start: index, end: amRange!.endIndex), with: " ")
+                } else {
+                    var index = amRange!.startIndex.predecessor();
+                    var curChar = upper[index]
+                    let startIdx = upper.startIndex;
+                    while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                        index = index.predecessor()
+                        curChar = upper[index]
+                    }
+                    index = index.successor()
+                    toCheck = upper.substringWithRange(Range(start: index, end: amRange!.endIndex)).stringByReplacingOccurrencesOfString(" ", withString: "")
+                    upper.replaceRange(Range(start: index, end: amRange!.endIndex), with: " ")            }
+            }
+            if (check(toCheck)) {
+                if (state == 0) {
+                    startTime = toCheck;
+                } else {
+                    endTime = toCheck;
+                }
+                state += 1
+            }
+            //print(upper)
+        }
+        if (startTime != "") {
+            startTime = cleanTime(startTime);
+        }
+        if (endTime != "") {
+            endTime = cleanTime(endTime);
+        }
+    }
+    
+    func check(s : String) -> Bool  {
+        let fst = s[s.startIndex]
+        return (Int(String(fst)) != nil)
+    }
+    
+    func cleanTime(time : String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.NoStyle
+        dateFormatter.dateFormat =  "hh:mma"
+        var date = dateFormatter.dateFromString(time)
+        if (date == nil) {
+            dateFormatter.dateFormat =  "hha"
+            date = dateFormatter.dateFromString(time)
+        }
+        dateFormatter.dateFormat =  "hh:mma"
+        return dateFormatter.stringFromDate(date!)
+    }
+    
     
 }
 
