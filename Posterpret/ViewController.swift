@@ -73,7 +73,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         img.image = image
         counter += 1
         sendImageAPI(image)
-    }
+        
+        }
     
     @IBAction func addImg(sender: AnyObject) {
         imagePicker.sourceType = .PhotoLibrary
@@ -92,22 +93,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    @IBAction func apiButton(sender: AnyObject) {
-        let jsonRequest: [String: AnyObject] = [
-            "requests": [
-                "features": [
-                "type":"TEXT_DETECTION"
-            ],
-            "image": [
-            "source": [
-            "gcsImageUri":"gs://posterpret-buck/myObject\(counter).jpeg"
-        ]
-        ]
-        ]
-        ]
-        
-        data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: jsonRequest);
-    }
+//    @IBAction func apiButton(sender: AnyObject) {
+//        let jsonRequest: [String: AnyObject] = [
+//            "requests": [
+//                "features": [
+//                "type":"TEXT_DETECTION"
+//            ],
+//            "image": [
+//            "source": [
+//            "gcsImageUri":"gs://posterpret-buck/myObject\(counter).jpeg"
+//        ]
+//        ]
+//        ]
+//        ]
+//        
+//        data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: jsonRequest);
+//    }
     
     
     func sendImageAPI(image: UIImage) {
@@ -131,6 +132,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             do {
                 let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
                 print("Result -> \(result)")
+                
+                let jsonRequest: [String: AnyObject] = [
+                    "requests": [
+                        "features": [
+                            "type":"TEXT_DETECTION"
+                        ],
+                        "image": [
+                            "source": [
+                                "gcsImageUri":"gs://posterpret-buck/myObject\(self.counter).jpeg"
+                            ]
+                        ]
+                    ]
+                ]
+                
+                self.data_request("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDcXIushxfZ3Bf2Dl-MDxVitmBw0hE8LBE", json: jsonRequest);
             } catch {
                 print("Error -> \(error)")
             }
@@ -295,6 +311,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             }
                         }
                     }
+                    
+                    print("THIS IS THE LOCATION: " + self.location)
                     
                 } catch {
                     print("Error -> \(error)")
