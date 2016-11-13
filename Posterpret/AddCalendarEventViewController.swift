@@ -170,6 +170,7 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
         
         firstResponderATM.textColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0)
+        firstResponderATM.font = UIFont(name: "Share-Regular", size: 18)
     }
     
     func datePickerViewDisplayer(sender: UITextField) {
@@ -202,6 +203,9 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
             dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
             dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
             sender.text = dateFormatter.stringFromDate(datePickerView.date)
+            
+            firstResponderATM.textColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0)
+            firstResponderATM.font = UIFont(name: "Share-Regular", size: 18)
         }
         
         // Set minimum and maximum time ranges from the user's current time (NOT hardcoded!) (up to one year prior to two years ahead)
@@ -235,6 +239,7 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
         firstResponderATM.text = dateFormatter.stringFromDate(sender.date)
         
         firstResponderATM.textColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0)
+        firstResponderATM.font = UIFont(name: "Share-Regular", size: 18)
     }
     
     func timePickerViewDisplayer(sender: UITextField) {
@@ -267,6 +272,9 @@ class AddCalendarEventViewController: UIViewController, UITextFieldDelegate {
             dateFormatter.dateStyle = NSDateFormatterStyle.NoStyle
             dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
             sender.text = dateFormatter.stringFromDate(datePickerView.date)
+            
+            firstResponderATM.textColor = UIColor(red:0.91, green:0.53, blue:0.25, alpha:1.0)
+            firstResponderATM.font = UIFont(name: "Share-Regular", size: 18)
         }
         
         // Im not really sure what this does, thinking about it
