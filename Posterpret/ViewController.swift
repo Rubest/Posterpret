@@ -375,8 +375,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    
-    
     func autofillCalendar(input: String) {
         var upper = input.uppercaseString
         var state = 0
@@ -385,13 +383,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let pmRange = upper.rangeOfString("PM")
             let amRange = upper.rangeOfString("AM")
             var toCheck = ""
-            if ((pmRange == nil) && (amRange == nil)) { return }
+            var foundColon = false;
+            var foundNumAfterColon = false;
+            var passedSuffix = false;
+            if ((pmRange == nil) && (amRange == nil)) { break }
             else if (pmRange == nil) {
                 //let bef = upper.substringToIndex(amRange!.startIndex)
                 var index = amRange!.startIndex.predecessor();
                 var curChar = upper[index]
                 let startIdx = upper.startIndex;
-                while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                while (index >= startIdx && (((curChar == " ") && !passedSuffix) || (curChar == ":") || (Int(String(curChar)) != nil)) && !foundNumAfterColon) {
+                    if (curChar == ":") { foundColon = true }
+                    if ((Int(String(curChar)) != nil)) {
+                        if (foundColon) {
+                            foundNumAfterColon = true
+                        }
+                        passedSuffix = true;
+                    }
                     index = index.predecessor()
                     curChar = upper[index]
                 }
@@ -404,7 +412,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 var index = pmRange!.startIndex.predecessor();
                 var curChar = upper[index]
                 let startIdx = upper.startIndex;
-                while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                while (index >= startIdx && (((curChar == " ") && !passedSuffix) || (curChar == ":") || (Int(String(curChar)) != nil)) && !foundNumAfterColon) {
+                    if (curChar == ":") { foundColon = true }
+                    if ((Int(String(curChar)) != nil)) {
+                        if (foundColon) {
+                            foundNumAfterColon = true
+                        }
+                        passedSuffix = true;
+                    }
                     index = index.predecessor()
                     curChar = upper[index]
                 }
@@ -416,7 +431,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     var index = pmRange!.startIndex.predecessor();
                     var curChar = upper[index]
                     let startIdx = upper.startIndex;
-                    while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                    while (index >= startIdx && (((curChar == " ") && !passedSuffix) || (curChar == ":") || (Int(String(curChar)) != nil)) && !foundNumAfterColon) {
+                        if (curChar == ":") { foundColon = true }
+                        if ((Int(String(curChar)) != nil)) {
+                            if (foundColon) {
+                                foundNumAfterColon = true
+                            }
+                            passedSuffix = true;
+                        }
                         index = index.predecessor()
                         curChar = upper[index]
                     }
@@ -427,7 +449,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     var index = amRange!.startIndex.predecessor();
                     var curChar = upper[index]
                     let startIdx = upper.startIndex;
-                    while (index >= startIdx && ((curChar == " ") || (curChar == ":") || (Int(String(curChar)) != nil))) {
+                    while (index >= startIdx && (((curChar == " ") && !passedSuffix) || (curChar == ":") || (Int(String(curChar)) != nil)) && !foundNumAfterColon) {
+                        if (curChar == ":") { foundColon = true }
+                        if ((Int(String(curChar)) != nil)) {
+                            if (foundColon) {
+                                foundNumAfterColon = true
+                            }
+                            passedSuffix = true;
+                        }
                         index = index.predecessor()
                         curChar = upper[index]
                     }
@@ -447,6 +476,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         if (startTime != "") {
             startTime = cleanTime(startTime);
+            
         }
         if (endTime != "") {
             endTime = cleanTime(endTime);
@@ -459,6 +489,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func cleanTime(time : String) -> String {
+        print("Time" + time)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.NoStyle
         dateFormatter.dateFormat =  "hh:mma"
@@ -467,10 +498,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             dateFormatter.dateFormat =  "hha"
             date = dateFormatter.dateFromString(time)
         }
+        if (date == nil) {
+            dateFormatter.dateFormat =  "hhmma"
+            date = dateFormatter.dateFromString(time)
+        }
         dateFormatter.dateFormat =  "hh:mma"
-        return dateFormatter.stringFromDate(date!)
+        if (date == nil) {
+            return ""
+        } else {
+            return dateFormatter.stringFromDate(date!)
+        }
     }
-    
     
 }
 
