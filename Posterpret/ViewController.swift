@@ -32,6 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         img.image = image
         counter += 1
         sendImageAPI(image)
+        testimg.image = image
     }
     
     @IBAction func addImg(sender: AnyObject) {
@@ -131,29 +132,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     return
                 }
                 
+                let final:String;
                 do {
+                    
                     let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
-                    
-                    print("Result -> \(result)")
-                    
-//                    print("here1")
-//                    let parsedJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? Array<AnyObject>
-//                    
-//                    if let textAnnotations = parsedJSON?[0] as? [String: AnyObject] {
-//                        print("here2")
-//                        print("\(textAnnotations)")
-//                        if let person = textAnnotations["description"] as? [String: AnyObject] {
-//                            
-//                        }
-//                    }
-                    
-                    
-                    self.natLang(result!);
-//                    let myArray = JSONArray(result);
+                    let snd = result!.first!.1 as! [AnyObject]
+                    let tird = (snd[0] as! [String: AnyObject]).first
+                    if (tird == nil) {
+                        final = ""
+                    } else {
+                        let third = (((snd[0] as! [String: AnyObject]).first!.1 as! [AnyObject])[0]) as! [String:AnyObject]
+                        final = (third["description"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: " ")
+                    }
+                    self.natLang(final);
                     
                 } catch {
-                    print("Error -> \(error)")
+                    final = ""
                 }
+                
+//                do {
+////                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+////                    
+////                    print("Result -> \(result)")
+//                    
+//                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+//                    let snd = result!.first!.1 as! [AnyObject]
+//                    let third = (((snd[0] as! [String: AnyObject]).first!.1 as! [AnyObject])[0]) as! [String:AnyObject]
+//                    let final = (third["description"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: " ")
+//                    print(final)
+//                    
+//                    self.natLang(final);
+//                    
+//                } catch {
+//                    print("Error -> \(error)")
+//                }
             }
             task.resume()
         } catch {
@@ -180,7 +192,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             "document": [
                 "type": "PLAIN_TEXT",
                 "language": "EN",
-                "content": "Michelangelo Caravaggio, Italian painter, is known for 'The Calling of Saint Matthew'."
+                "content": "\(json)"
             ],
             "encodingType":"UTF8"
         ]
