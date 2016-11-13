@@ -180,7 +180,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8zY-i5-dm0">
                                 <rect key="frame" x="20" y="428" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                 <connections>
                                     <action selector="titleTextFieldEditing:" destination="yGu-14-dZK" eventType="editingDidBegin" id="NWY-Gi-kLb"/>
                                 </connections>
@@ -188,7 +188,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-dV-tQd">
                                 <rect key="frame" x="20" y="476" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                 <connections>
                                     <action selector="locationTextFieldEditing:" destination="yGu-14-dZK" eventType="editingDidBegin" id="9wE-u5-Mcx"/>
                                 </connections>
